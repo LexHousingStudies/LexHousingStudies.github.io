@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <title>Geo409 Task H Starter</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: whitesmoke;
+            font-family: Lato, sans-serif;
+            color: #0D0000;
+        }
+        header {
+            padding: 6px 10%;
+        }
+        h1 {
+            display: inline-block;
+            margin-right: 20px;
+            color: #001323;
+        }
+        h2 {
+            display: inline-block;
+            color: #001323;
+        }
+        #map {            
+            width: 80%;
+            height: 900px;
+            margin: 10px auto;
+        }
+        footer {
+            padding: 6px 10%;
+            width: 80%;
+        }
+        p {
+            font-size: 1em;
+            color: #001323;
+        }
+        /* Additional style rules go here! */
+        
+        .blue {
+            color: #165bb6;
+        }
+        .red {
+            color: #cc0000;
+        }
+        .purple {
+            color: #b6165b; 
+        }
+        .range {
+            position:absolute;
+            width:100%;
+        }
+        .black {
+            color: #000000;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Foreclosures in Northeast Lexington</h1>
+<!--        <h2>Map Subtitle</h2>-->
+    </header>
+
+    <div id='map'></div>
+<!--    <input id='range' class='range' type='range' min='0' max='1.0' step='any' />-->
+
+    <footer>
+        <p>Map created by Kenny Stancil and Laura Greenfield, using data from the Lexington-Fayette Property Valuation Adminstrator</p>
+<!--
+        <p>Additional information about the data and map goes here.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis urna magna, maximus nec laoreet sit amet, dictum ultricies nibh. Ut id auctor lacus. Nam a dolor et justo luctus luctus. Duis a elit eget risus dictum vehicula id eu elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed sed enim nisl. Vestibulum commodo imperdiet lacus, sed facilisis erat placerat sit amet. Nulla consequat malesuada neque eget aliquet. Integer non convallis nisl, gravida ultrices ex. Fusce nec vestibulum elit. Sed elementum lectus ipsum, vulputate elementum ex laoreet a. Aenean eu ex varius, varius felis vitae, efficitur nulla. Quisque pretium laoreet ante, in sodales dui vehicula at. Mauris eu sem sapien.
+        </p>
+-->
+    </footer>
+
+    <script src ="NELex_ParcelClip.js"></script>
+    <script src ="NELex%20foreclosed%201998.js"></script>
+    <script src ="NELex%20foreclosed%201999.js"></script>
+    <script src ="NELex%20foreclosed%202000.js"></script>
+    <script src ="NELex%20foreclosed%202008.js"></script>
+    <script src ="NELex%20foreclosed%202009.js"></script>
+    <script src ="NELex%20foreclosed%202010.js"></script>
+    <script src ="NELex%20foreclosed%202011.js"></script>
+    <script src ="NELex%20foreclosed%202012.js"></script>
+    <script src ="NELex%20foreclosed%202013.js"></script>
+    <script src ="NELex%20foreclosed%202014.js"></script>
+    
+    <script>
+        var map = L.map('map', {
+            center: [38.055,-84.483],
+            zoom: 15,
+            zoomControl: false,
+            dragging: false,
+        });
+        
+       var tiles = L.tileLayer('http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png', {
+	       attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>                    &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+	       subdomains: 'abcd',
+	       minZoom: 15,
+	       maxZoom: 15
+       });
+       
+
+//        var tiles = L.tileLayer('http://a{s}.acetate.geoiq.com/tiles/acetate-hillshading/{z}/{x}/{y}.png', {
+//            attribution: '&copy;2012 Esri & Stamen, Data from OSM and Natural Earth',
+//            subdomains: '0123',
+//            minZoom: 15,
+//            maxZoom: 15          THIS IS ORIGINAL BASEMAP
+//        });
+
+        map.addLayer(tiles);
+        
+        var base = L.geoJson(baseLayer, {
+                weight: 1,
+                color: 'black'
+            }).addTo(map);
+        
+//        var styleOptions = {
+//            fillOpacity: 0,
+//            weight: 1
+//        };
+        
+        
+        var foreclosure98 = L.geoJson(foreclosed98).addTo(map);
+        
+        var foreclosure99 = L.geoJson(foreclosed99).addTo(map);
+        
+        var foreclosure00 = L.geoJson(foreclosed00).addTo(map);
+        
+        var foreclosure08 = L.geoJson(foreclosed08).addTo(map);
+        
+        var foreclosure09 = L.geoJson(foreclosed09).addTo(map);
+        
+        var foreclosure10 = L.geoJson(foreclosed10).addTo(map);
+        
+        var foreclosure11 = L.geoJson(foreclosed11).addTo(map);
+        
+        var foreclosure12 = L.geoJson(foreclosed12).addTo(map);
+        
+        var foreclosure13 = L.geoJson(foreclosed13).addTo(map);
+        
+        var foreclosure14 = L.geoJson(foreclosed14).addTo(map);
+        
+    
+//        var vacancy10 = L.geoJson(vacant2010, {
+//                weight: 1,
+//                fillColor: 'blue',
+//                fillOpacity: 0.8
+//            }).addTo(map);
+//        
+//        var vacancy13 = L.geoJson(vacant2013, {
+//                weight: 1,
+//                fillColor: 'red',
+//                fillOpacity: 1
+//            }).addTo(map);
+//        
+        var controls = {
+            "1998 Foreclosed": foreclosure98, 
+            "1999 Foreclosed": foreclosure99,
+            "2000 Foreclosed": foreclosure00,
+            "2008 Foreclosed": foreclosure08,
+            "2009 Foreclosed": foreclosure09,
+            "2010 Foreclosed": foreclosure10,
+            "2011 Foreclosed": foreclosure11,
+            "2012 Foreclosed": foreclosure12,
+            "2013 Foreclosed": foreclosure13,
+            "2014 Foreclosed": foreclosure14            
+        };
+    
+        L.control.layers(null, controls, {
+            collapsed: false
+        }).addTo(map);
+        
+//        function clip() {
+//            var nw = map.containerPointToLayerPoint([0, 0]),
+//                se = map.containerPointToLayerPoint(map.getSize()),
+//                clipX = nw.x + (se.x - nw.x) * range.value;
+//            
+//                console.log(nw, se, clipX);
+//            
+////            document.getElementsByClassName("leaflet-overlay-pane").style.clip = 'rect(' + [nw.y, clipX, se.y, nw.x].join('px,') + 'px)';
+//
+////            vacancy13.getContainer().style.clip = 'rect(' + [nw.y, clipX, se.y, nw.x].join('px,') + 'px)';
+//        };
+//        
+//        range['oninput' in range ? 'oninput' : 'onchange'] = clip;
+//        
+//        clip();
+          
+    </script>
+    
+</body>
+
+</html>
