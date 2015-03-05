@@ -3,7 +3,7 @@
 
 <head>
     <meta charset=utf-8 />
-    <title>Housing Injustice in NELex</title>
+    <title>Geo409 Task H Starter</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
@@ -62,19 +62,13 @@
         .black {
             color: #000000;
         }
-        .green1 {
-            color: #00cc00;
-        }
-        .green2 {
-            color: #008F00;
-        }
         
     </style>
 </head>
 
 <body>
     <header>
-        <h1>Housing Injustice in Northeast Lexington</h1>
+        <h1>LFUCG Vacant Property Review, 2010 & 2013</h1>
 <!--        <h2>Map Subtitle</h2>-->
     </header>
 
@@ -82,7 +76,7 @@
 <!--    <input id='range' class='range' type='range' min='0' max='1.0' step='any' />-->
 
     <footer>
-        <p>Map created by MS, KS, LG, & RD</p>
+        <p>Map authored by LG & RD, using data from Lexington-Fayette Urban County Government</p>
 <!--
         <p>Additional information about the data and map goes here.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis urna magna, maximus nec laoreet sit amet, dictum ultricies nibh. Ut id auctor lacus. Nam a dolor et justo luctus luctus. Duis a elit eget risus dictum vehicula id eu elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed sed enim nisl. Vestibulum commodo imperdiet lacus, sed facilisis erat placerat sit amet. Nulla consequat malesuada neque eget aliquet. Integer non convallis nisl, gravida ultrices ex. Fusce nec vestibulum elit. Sed elementum lectus ipsum, vulputate elementum ex laoreet a. Aenean eu ex varius, varius felis vitae, efficitur nulla. Quisque pretium laoreet ante, in sodales dui vehicula at. Mauris eu sem sapien.
@@ -90,19 +84,6 @@
 -->
     </footer>
 
-    <script src ="NELex_ParcelClip.js"></script>
-    <script src ="NELex%20foreclosed%201998.js"></script>
-    <script src ="NELex%20foreclosed%201999.js"></script>
-    <script src ="NELex%20foreclosed%202000.js"></script>
-    <script src ="NELex%20foreclosed%202008.js"></script>
-    <script src ="NELex%20foreclosed%202009.js"></script>
-    <script src ="NELex%20foreclosed%202010.js"></script>
-    <script src ="NELex%20foreclosed%202011.js"></script>
-    <script src ="NELex%20foreclosed%202012.js"></script>
-    <script src ="NELex%20foreclosed%202013.js"></script>
-    <script src ="NELex%20foreclosed%202014.js"></script>
-    <script src ="NELex_Vacant_2010.js"></script>
-    <script src ="NELex_Vacant_2013.js"></script>
     <script src ="prior2008_lessthan40.js"></script>
     <script src ="2008_lessthan40.js"></script>
     <script src ="2009_lessthan40.js"></script>
@@ -111,7 +92,7 @@
     <script src ="2012_lessthan40.js"></script>
     <script src ="2013_lessthan40.js"></script>
     <script src ="2014_lessthan40.js"></script>
-
+    
     
     <script>
         var map = L.map('map', {
@@ -139,129 +120,28 @@
         map.addLayer(tiles);
         
         var base = L.geoJson(baseLayer, {
-                weight: 0.5,
+                weight: 1,
                 color: 'black'
             }).addTo(map);
         
-//        var styleOptions = {
-//            fillOpacity: 0,
-//            weight: 1
-//        };
-        
-        
-        var foreclosure98 = L.geoJson(foreclosed98, {
-                weight: 1,
-                color: 'green1',
-                fillOpacity: 0.5
-            }).addTo(map);
-        
-        var foreclosure99 = L.geoJson(foreclosed99, {
-                weight: 1,
-                fillColor: 'green1',
-                fillOpacity: 0.5
-        }).addTo(map);
-        
-        var foreclosure00 = L.geoJson(foreclosed00, {
-                weight: 1,
-                fillColor: 'green1',
-                fillOpacity: 0.5
-        }).addTo(map);
-        
-        var foreclosure08 = L.geoJson(foreclosed08, {
-                weight: 1,
-                fillColor: 'green2',
-                fillOpacity: 0.5
-        }).addTo(map);
-        
-        var foreclosure09 = L.geoJson(foreclosed09, {
-                weight: 1,
-                fillColor: 'green2',
-                fillOpacity: 0.5
-        }).addTo(map);
-        
-        var foreclosure10 = L.geoJson(foreclosed10, {
-                weight: 1,
-                fillColor: 'green2',
-                fillOpacity: 0.5
-        }).addTo(map);
-        
-        var foreclosure11 = L.geoJson(foreclosed11, {
-                weight: 1,
-                fillColor: 'green2',
-                fillOpacity: 0.5
-        }).addTo(map);
-        
-        var foreclosure12 = L.geoJson(foreclosed12, {
-                weight: 1,
-                fillColor: 'green2',
-                fillOpacity: 0.5
-        }).addTo(map);
-        
-        var foreclosure13 = L.geoJson(foreclosed13, {
-                weight: 1,
-                fillColor: 'green2',
-                fillOpacity: 0.5
-        }).addTo(map);
-        
-        var foreclosure14 = L.geoJson(foreclosed14, {
-                weight: 1,
-                fillColor: 'green2',
-                fillOpacity: 0.5
-        }).addTo(map);
-        
-    
         var vacancy10 = L.geoJson(vacant2010, {
                 weight: 1,
                 fillColor: 'blue',
                 fillOpacity: 0.8
-        }).addTo(map);
+            }).addTo(map);
         
         var vacancy13 = L.geoJson(vacant2013, {
                 weight: 1,
                 fillColor: 'red',
                 fillOpacity: 1
-        }).addTo(map);
+            }).addTo(map);
         
-        var less2014 = L.geoJson(less402014, {
-                weight: 3,
-                fillColor: 'yellow',
-                color: 'yellow',
-                fillOpacity: 1
-        }).addTo(map);
-        
-        console.log(less2014);        
-        
-        var controlsForeclosed = {
-            "1998 Foreclosed": foreclosure98, 
-            "1999 Foreclosed": foreclosure99,
-            "2000 Foreclosed": foreclosure00,
-            "2008 Foreclosed": foreclosure08,
-            "2009 Foreclosed": foreclosure09,
-            "2010 Foreclosed": foreclosure10,
-            "2011 Foreclosed": foreclosure11,
-            "2012 Foreclosed": foreclosure12,
-            "2013 Foreclosed": foreclosure13,
-            "2014 Foreclosed": foreclosure14            
+        var controls = {
+            "2010 Vacancy": vacancy10, 
+            "2013 Vacancy": vacancy13        
         };
         
-        var controlsVacancy = {
-            "2010 Vacant Properties": vacancy10,
-            "2013 Vacant Properties": vacancy13
-        };
-        
-        var controlsLess40 = {
-            "2014 Less Than $40,000": less2014
-        };
-    
-        L.control.layers(null, controlsForeclosed, {
-            collapsed: false
-        }).addTo(map);
-        
-        L.control.layers(null, controlsVacancy, {
-            collapsed: false
-        }).addTo(map);
-        
-        L.control.layers(null, controlsLess40, {
+        L.control.layers(null, controls, {
             collapsed: false
         }).addTo(map);
         
