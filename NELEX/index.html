@@ -103,14 +103,7 @@
     <script src ="NELex%20foreclosed%202014.js"></script>
     <script src ="NELex_Vacant_2010.js"></script>
     <script src ="NELex_Vacant_2013.js"></script>
-    <script src ="prior2008_lessthan40.js"></script>
-    <script src ="2008_lessthan40.geojson"></script>
-    <script src ="2009_lessthan40.geojson"></script>
-    <script src ="2010_lessthan40.geojson"></script>
-    <script src ="2011_lessthan40.js"></script>
-    <script src ="2012_lessthan40.js"></script>
-    <script src ="2013_lessthan40.js"></script>
-    <script src ="2014_lessthan40.js"></script>
+
     
     <script>
         var map = L.map('map', {
@@ -213,13 +206,13 @@
                 weight: 1,
                 fillColor: 'blue',
                 fillOpacity: 0.8
-            }).addTo(map);
+        }).addTo(map);
         
         var vacancy13 = L.geoJson(vacant2013, {
                 weight: 1,
                 fillColor: 'red',
                 fillOpacity: 1
-            }).addTo(map);
+        }).addTo(map);
         
         var controlsForeclosed = {
             "1998 Foreclosed": foreclosure98, 
