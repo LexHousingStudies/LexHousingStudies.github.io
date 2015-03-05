@@ -119,26 +119,78 @@
 
         map.addLayer(tiles);
         
-        var base = L.geoJson(baseLayer, {
-                weight: 1,
-                color: 'black'
-            }).addTo(map);
+//        var base = L.geoJson(baseLayer, {
+//                weight: 1,
+//                color: 'black'
+//            }).addTo(map);
         
-        var vacancy10 = L.geoJson(vacant2010, {
+        var lessPrior = L.geoJson(less40Prior, {
                 weight: 1,
-                fillColor: 'blue',
-                fillOpacity: 0.8
-            }).addTo(map);
-        
-        var vacancy13 = L.geoJson(vacant2013, {
-                weight: 1,
-                fillColor: 'red',
+                color: 'yellow',
+                fillColor: 'yellow',
                 fillOpacity: 1
-            }).addTo(map);
+        }).addTo(map);
         
+        var less2008 = L.geoJson(less402008, {
+                weight: 1,
+                color: 'yellow',
+                fillColor: 'yellow',
+                fillOpacity: 1
+        }).addTo(map);
+        
+        var less2009 = L.geoJson(less402009, {
+                weight: 1,
+                color: 'yellow',
+                fillColor: 'yellow',
+                fillOpacity: 1
+        }).addTo(map);
+        
+        var less2010 = L.geoJson(less402010, {
+                weight: 1,
+                color: 'yellow',
+                fillColor: 'yellow',
+                fillOpacity: 1
+        }).addTo(map);
+        
+        var less2011 = L.geoJson(less402011, {
+                weight: 1,
+                color: 'yellow',
+                fillColor: 'yellow',
+                fillOpacity: 1
+        }).addTo(map);
+        
+        var less2012 = L.geoJson(less402012, {
+                weight: 1,
+                color: 'yellow',
+                fillColor: 'yellow',
+                fillOpacity: 1
+        }).addTo(map);
+        
+        var less2013 = L.geoJson(less402013, {
+                weight: 1,
+                color: 'yellow',
+                fillColor: 'yellow',
+                fillOpacity: 1
+        }).addTo(map);
+        
+        var less2014 = L.geoJson(less402014, {
+                weight: 1,
+                color: 'yellow',
+                fillColor: 'yellow',
+                fillOpacity: 1
+        }).addTo(map);
+        
+     
         var controls = {
-            "2010 Vacancy": vacancy10, 
-            "2013 Vacancy": vacancy13        
+            "Pre-2008 Less Than $40,000": lessPrior,
+            "2008 Less Than $40,000": less2008,
+            "2009 Less Than $40,000": less2009,
+            "2010 Less Than $40,000": less2010,
+            "2011 Less Than $40,000": less2011,
+            "2012 Less Than $40,000": less2012,
+            "2013 Less Than $40,000": less2013,
+            "2014 Less Than $40,000": less2014
+                                 
         };
         
         L.control.layers(null, controls, {
