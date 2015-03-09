@@ -24,7 +24,7 @@
         }
         h1 {
             display: inline-block;
-            margin-right: 20px;
+            margin-right: 10px;
             color: #001323;
         }
         h2 {
@@ -32,13 +32,13 @@
             color: #001323;
         }
         #map {            
-            width: 80%;
+            width: 90%;
             height: 900px;
             margin: 10px auto;
         }
         footer {
-            padding: 6px 10%;
-            width: 80%;
+            padding-left: 0px;
+            width: 90%;
         }
         p {
             font-size: 1em;
@@ -72,7 +72,7 @@
 
 <body>
     <header>
-        <h1>Housing Injustice in Northeast Lexington</h1>
+        <h1>Housing Landscape of Northeast Lexington</h1>
 <!--        <h2>Map Subtitle</h2>-->
     </header>
 
@@ -115,15 +115,15 @@
         var map = L.map('map', {
             center: [38.055,-84.483],
             zoom: 15,
-            zoomControl: false,
-            dragging: false,
+            zoomControl: true,
+            dragging: true,
         });
         
        var tiles = L.tileLayer('http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png', {
 	       attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>                    &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 	       subdomains: 'abcd',
-	       minZoom: 15,
-	       maxZoom: 15
+	       minZoom: 13,
+	       maxZoom: 18
        });
        
 
