@@ -23,14 +23,10 @@
             padding: 2px 2.5%;
         }
         h1 {
-<<<<<<< HEAD
+
             display: inline;
 /*            margin-right: 20px;*/
             margin: 10px auto;
-=======
-            display: inline-block;
-            margin-right: 10px;
->>>>>>> origin/master
             color: #001323;
         }
         h2 {
@@ -38,22 +34,15 @@
             color: #001323;
         }
         #map {            
-<<<<<<< HEAD
+
             width: 95%;
-=======
-            width: 90%;
->>>>>>> origin/master
             height: 900px;
             margin: 10px auto;
         }
         footer {
-<<<<<<< HEAD
+
             padding: 2px 2.5%;
             width: 80%;
-=======
-            padding-left: 0px;
-            width: 90%;
->>>>>>> origin/master
         }
         p {
             font-size: 1em;
@@ -87,11 +76,9 @@
 
 <body>
     <header>
-<<<<<<< HEAD
+
         <h1>Lexington's Uneven Housing Landscape</h1>
-=======
-        <h1>Housing Landscape of Northeast Lexington</h1>
->>>>>>> origin/master
+
 <!--        <h2>Map Subtitle</h2>-->
     </header>
 
@@ -108,6 +95,8 @@
     </footer>
 
     <script src ="NELex_ParcelClip.js"></script>
+    <script src ="NELex_Vacant_2010.js"></script>
+    <script src ="NELex_Vacant_2013.js"></script>    
     <script src ="NELex%20foreclosed%201998.js"></script>
     <script src ="NELex%20foreclosed%201999.js"></script>
     <script src ="NELex%20foreclosed%202000.js"></script>
@@ -118,8 +107,6 @@
     <script src ="NELex%20foreclosed%202012.js"></script>
     <script src ="NELex%20foreclosed%202013.js"></script>
     <script src ="NELex%20foreclosed%202014.js"></script>
-    <script src ="NELex_Vacant_2010.js"></script>
-    <script src ="NELex_Vacant_2013.js"></script>
     <script src ="prior2008_lessthan40.js"></script>
     <script src ="2008_lessthan40.js"></script>
     <script src ="2009_lessthan40.js"></script>
@@ -134,11 +121,7 @@
         var map = L.map('map', {
             center: [38.055,-84.483],
             zoom: 15,
-<<<<<<< HEAD
             zoomControl: false,
-=======
-            zoomControl: true,
->>>>>>> origin/master
             dragging: true,
         });
         
@@ -169,6 +152,17 @@
 //            weight: 1
 //        };
         
+        var vacancy10 = L.geoJson(vacant2010, {
+                weight: 1,
+                fillColor: 'blue',
+                fillOpacity: 0.8
+        });
+        
+        var vacancy13 = L.geoJson(vacant2013, {
+                weight: 1,
+                fillColor: 'red',
+                fillOpacity: 1
+        });
         
         var foreclosure98 = L.geoJson(foreclosed98, {
                 fillOpacity: 0.5,
@@ -218,19 +212,6 @@
         var foreclosure14 = L.geoJson(foreclosed14, {
                 fillOpacity: 0.5,
                 color: 'orange'
-        });
-        
-    
-        var vacancy10 = L.geoJson(vacant2010, {
-                weight: 1,
-                fillColor: 'blue',
-                fillOpacity: 0.8
-        });
-        
-        var vacancy13 = L.geoJson(vacant2013, {
-                weight: 1,
-                fillColor: 'red',
-                fillOpacity: 1
         });
         
         var lessPrior = L.geoJson(less40Prior, {
@@ -288,6 +269,11 @@
                 fillOpacity: 1
         });
       
+        var controlsVacancy = {
+            "2010 Vacant Properties": vacancy10,
+            "2013 Vacant Properties": vacancy13
+        };
+        
         var controlsForeclosed = {
             "1998 Foreclosed": foreclosure98, 
             "1999 Foreclosed": foreclosure99,
@@ -299,11 +285,6 @@
             "2012 Foreclosed": foreclosure12,
             "2013 Foreclosed": foreclosure13,
             "2014 Foreclosed": foreclosure14            
-        };
-        
-        var controlsVacancy = {
-            "2010 Vacant Properties": vacancy10,
-            "2013 Vacant Properties": vacancy13
         };
         
         var controlsLess40 = {
@@ -318,14 +299,14 @@
                                  
         };        
     
+         L.control.layers(null, controlsVacancy, {
+            collapsed: false
+        }).addTo(map);
+        
         L.control.layers(null, controlsForeclosed, {
             collapsed: false
         }).addTo(map);
-        
-        L.control.layers(null, controlsVacancy, {
-            collapsed: false
-        }).addTo(map);
-        
+             
         L.control.layers(null, controlsLess40, {
             collapsed: false
         }).addTo(map);
