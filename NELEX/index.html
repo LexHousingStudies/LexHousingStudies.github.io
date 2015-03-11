@@ -3,7 +3,7 @@
 
 <head>
     <meta charset=utf-8 />
-    <title>Housing Injustice in NELex</title>
+    <title>GEO 509 Lex Housing</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
@@ -20,11 +20,12 @@
             color: #0D0000;
         }
         header {
-            padding: 6px 10%;
+            padding: 2px 2.5%;
         }
         h1 {
-            display: inline-block;
-            margin-right: 20px;
+            display: inline;
+/*            margin-right: 20px;*/
+            margin: 10px auto;
             color: #001323;
         }
         h2 {
@@ -32,7 +33,7 @@
             color: #001323;
         }
         #map {            
-            width: 80%;
+            width: 95%;
             height: 900px;
             margin: 10px auto;
         }
@@ -72,7 +73,7 @@
 
 <body>
     <header>
-        <h1>Housing Injustice in Northeast Lexington</h1>
+        <h1>Lexington's Uneven Housing Landscape</h1>
 <!--        <h2>Map Subtitle</h2>-->
     </header>
 
@@ -116,14 +117,14 @@
             center: [38.055,-84.483],
             zoom: 15,
             zoomControl: false,
-            dragging: false,
+            dragging: true,
         });
         
        var tiles = L.tileLayer('http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png', {
 	       attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>                    &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 	       subdomains: 'abcd',
-	       minZoom: 15,
-	       maxZoom: 15
+	       minZoom: 13,
+	       maxZoom: 18
        });
        
 
@@ -150,122 +151,120 @@
         var foreclosure98 = L.geoJson(foreclosed98, {
                 fillOpacity: 0.5,
                 color: 'orange'
-            }).addTo(map);
+            });
         
         var foreclosure99 = L.geoJson(foreclosed99, {
                 fillOpacity: 0.5,
                 color: 'orange'
-        }).addTo(map);
+        });
         
         var foreclosure00 = L.geoJson(foreclosed00, {
                 fillOpacity: 0.5,
                 color: 'orange'
-        }).addTo(map);
+        });
         
         var foreclosure08 = L.geoJson(foreclosed08, {
                 fillOpacity: 0.5,
                 color: 'orange'
-        }).addTo(map);
+        });
         
         var foreclosure09 = L.geoJson(foreclosed09, {
                 fillOpacity: 0.5,
                 color: 'orange'
-        }).addTo(map);
+        });
         
         var foreclosure10 = L.geoJson(foreclosed10, {
                 fillOpacity: 0.5,
                 color: 'orange'
-        }).addTo(map);
+        });
         
         var foreclosure11 = L.geoJson(foreclosed11, {
                 fillOpacity: 0.5,
                 color: 'orange'
-        }).addTo(map);
+        });
         
         var foreclosure12 = L.geoJson(foreclosed12, {
                 fillOpacity: 0.5,
                 color: 'orange'
-        }).addTo(map);
+        });
         
         var foreclosure13 = L.geoJson(foreclosed13, {
                 fillOpacity: 0.5,
                 color: 'orange'
-        }).addTo(map);
+        });
         
         var foreclosure14 = L.geoJson(foreclosed14, {
                 fillOpacity: 0.5,
                 color: 'orange'
-        }).addTo(map);
+        });
         
     
         var vacancy10 = L.geoJson(vacant2010, {
                 weight: 1,
                 fillColor: 'blue',
                 fillOpacity: 0.8
-        }).addTo(map);
+        });
         
         var vacancy13 = L.geoJson(vacant2013, {
                 weight: 1,
                 fillColor: 'red',
                 fillOpacity: 1
-        }).addTo(map);
+        });
         
         var lessPrior = L.geoJson(less40Prior, {
                 weight: 1,
                 color: 'yellow',
                 fillColor: 'yellow',
                 fillOpacity: 1
-        }).addTo(map);
+        });
         
         var less2008 = L.geoJson(less402008, {
                 weight: 1,
                 color: 'yellow',
                 fillColor: 'yellow',
                 fillOpacity: 1
-        }).addTo(map);
-        
+        })
         var less2009 = L.geoJson(less402009, {
                 weight: 1,
                 color: 'yellow',
                 fillColor: 'yellow',
                 fillOpacity: 1
-        }).addTo(map);
+        });
         
         var less2010 = L.geoJson(less402010, {
                 weight: 1,
                 color: 'yellow',
                 fillColor: 'yellow',
                 fillOpacity: 1
-        }).addTo(map);
+        });
         
         var less2011 = L.geoJson(less402011, {
                 weight: 1,
                 color: 'yellow',
                 fillColor: 'yellow',
                 fillOpacity: 1
-        }).addTo(map);
+        });
         
         var less2012 = L.geoJson(less402012, {
                 weight: 1,
                 color: 'yellow',
                 fillColor: 'yellow',
                 fillOpacity: 1
-        }).addTo(map);
+        });
         
         var less2013 = L.geoJson(less402013, {
                 weight: 1,
                 color: 'yellow',
                 fillColor: 'yellow',
                 fillOpacity: 1
-        }).addTo(map);
+        });
         
         var less2014 = L.geoJson(less402014, {
                 weight: 1,
                 color: 'yellow',
                 fillColor: 'yellow',
                 fillOpacity: 1
-        }).addTo(map);
-        
+        });
       
         var controlsForeclosed = {
             "1998 Foreclosed": foreclosure98, 
