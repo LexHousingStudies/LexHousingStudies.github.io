@@ -125,6 +125,22 @@
     <script src ="MFC.2012.js"></script>
     <script src ="MFC.2013.js"></script>
     <script src ="MFC.2014.js"></script>
+    <script src ="TFC.1995.js"></script>
+    <script src ="TFC.1997.js"></script>
+    <script src ="TFC.2000.js"></script>
+    <script src ="TFC.2001.js"></script>
+    <script src ="TFC.2002.js"></script>
+    <script src ="TFC.2003.js"></script>
+    <script src ="TFC.2004.js"></script>
+    <script src ="TFC.2005.js"></script>
+    <script src ="TFC.2006.js"></script>
+    <script src ="TFC.2007.js"></script>
+    <script src="TFC.2008.js"></script>
+    <script src="TFC.2009.js"></script>
+    <script src="TFC.2010.js"></script>
+    <script src="TFC.2011.js"></script>
+    <script src="TFC.2013.js"></script>
+    <script src="TFC.2014.js"></script>
 
     
     <script>
@@ -196,66 +212,98 @@
         
         var mortgage2014 = L.geoJson(mfc2014);
         
-        var foreclosure98 = L.geoJson(foreclosed98, {
-                weight: 1,
-                fillOpacity: 1,
-                color: '#1975FF'
-            });
+        var tax95 = L.geoJson(tfc95);
         
-        var foreclosure99 = L.geoJson(foreclosed99, {
-                weight: 1,
-                fillOpacity: 1,
-                color: '#1975FF'
-        });
+        var tax97 = L.geoJson(tfc97);
         
-        var foreclosure00 = L.geoJson(foreclosed00, {
-                weight: 1,
-                fillOpacity: 1,
-                color: '#1975FF'
-        });
+        var tax00 = L.geoJson(tfc00);
         
-        var foreclosure08 = L.geoJson(foreclosed08, {
-                weight: 1,
-                fillOpacity: 1,
-                color: '#0052CC'
-        });
+        var tax01 = L.geoJson(tfc01);
         
-        var foreclosure09 = L.geoJson(foreclosed09, {
-                weight: 1,
-                fillOpacity: 1,
-                color: '#003D99'
-        });
+        var tax02 = L.geoJson(tfc02);
         
-        var foreclosure10 = L.geoJson(foreclosed10, {
-                weight: 1,
-                fillOpacity: 1,
-                color: '#003D99'
-        });
+        var tax03 = L.geoJson(tfc03);
         
-        var foreclosure11 = L.geoJson(foreclosed11, {
-                weight: 1,
-                fillOpacity: 1,
-                color: '#003D99'
-        });
+        var tax04 = L.geoJson(tfc04);
         
-        var foreclosure12 = L.geoJson(foreclosed12, {
-                weight: 1,
-                fillOpacity: 1,
-                color: '#003D99'
-        });
+        var tax05 = L.geoJson(tfc05);
         
-        var foreclosure13 = L.geoJson(foreclosed13, {
-                weight: 1,
-                fillOpacity: 1,
-                color: '#003D99'
-        });
+        var tax06 = L.geoJson(tfc06);
         
-        var foreclosure14 = L.geoJson(foreclosed14, {
-                weight: 1,
-                fillOpacity: 1,
-                color: '#003D99'
-        });
+        var tax07 = L.geoJson(tfc07);
         
+        var tax08 = L.geoJson(tfc08);
+        
+        var tax09 = L.geoJson(tfc09);
+        
+        var tax10 = L.geoJson(tfc10);
+        
+        var tax11 = L.geoJson(tfc11);
+        
+        var tax13 = L.geoJson(tfc13);
+        
+        var tax14 = L.geoJson(tfc14);
+        
+//        var foreclosure98 = L.geoJson(foreclosed98, {
+//                weight: 1,
+//                fillOpacity: 1,
+//                color: '#1975FF'
+//            });
+//        
+//        var foreclosure99 = L.geoJson(foreclosed99, {
+//                weight: 1,
+//                fillOpacity: 1,
+//                color: '#1975FF'
+//        });
+//        
+//        var foreclosure00 = L.geoJson(foreclosed00, {
+//                weight: 1,
+//                fillOpacity: 1,
+//                color: '#1975FF'
+//        });
+//        
+//        var foreclosure08 = L.geoJson(foreclosed08, {
+//                weight: 1,
+//                fillOpacity: 1,
+//                color: '#0052CC'
+//        });
+//        
+//        var foreclosure09 = L.geoJson(foreclosed09, {
+//                weight: 1,
+//                fillOpacity: 1,
+//                color: '#003D99'
+//        });
+//        
+//        var foreclosure10 = L.geoJson(foreclosed10, {
+//                weight: 1,
+//                fillOpacity: 1,
+//                color: '#003D99'
+//        });
+//        
+//        var foreclosure11 = L.geoJson(foreclosed11, {
+//                weight: 1,
+//                fillOpacity: 1,
+//                color: '#003D99'
+//        });
+//        
+//        var foreclosure12 = L.geoJson(foreclosed12, {
+//                weight: 1,
+//                fillOpacity: 1,
+//                color: '#003D99'
+//        });
+//        
+//        var foreclosure13 = L.geoJson(foreclosed13, {
+//                weight: 1,
+//                fillOpacity: 1,
+//                color: '#003D99'
+//        });
+//        
+//        var foreclosure14 = L.geoJson(foreclosed14, {
+//                weight: 1,
+//                fillOpacity: 1,
+//                color: '#003D99'
+//        });
+//        
         var lessPrior = L.geoJson(less40Prior, {
                 weight: 1,
                 color: 'yellow',
@@ -329,18 +377,37 @@
             "2014 Mortgage Foreclosure": mortgage2014
         };
         
-        var controlsForeclosed = {
-            "1998 Foreclosed": foreclosure98, 
-            "1999 Foreclosed": foreclosure99,
-            "2000 Foreclosed": foreclosure00,
-            "2008 Foreclosed": foreclosure08,
-            "2009 Foreclosed": foreclosure09,
-            "2010 Foreclosed": foreclosure10,
-            "2011 Foreclosed": foreclosure11,
-            "2012 Foreclosed": foreclosure12,
-            "2013 Foreclosed": foreclosure13,
-            "2014 Foreclosed": foreclosure14            
+        var controlsTFC = {
+            "1995 Tax Foreclosure": tax95,
+            "1997 Tax Foreclosure": tax97,
+            "2000 Tax Foreclosure": tax00,
+            "2001 Tax Foreclosure": tax01,
+            "2002 Tax Foreclosure": tax02,
+            "2003 Tax Foreclosure": tax03,
+            "2004 Tax Foreclosure": tax04,
+            "2005 Tax Foreclosure": tax05,
+            "2006 Tax Foreclosure": tax06,
+            "2007 Tax Foreclosure": tax07,
+            "2008 Tax Foreclosure": tax08,
+            "2009 Tax Foreclosure": tax09,
+            "2010 Tax Foreclosure": tax10,
+            "2011 Tax Foreclosure": tax11,
+            "2013 Tax Foreclosure": tax13,
+            "2014 Tax Foreclosure": tax14
+            
         };
+//        var controlsForeclosed = {
+//            "1998 Foreclosed": foreclosure98, 
+//            "1999 Foreclosed": foreclosure99,
+//            "2000 Foreclosed": foreclosure00,
+//            "2008 Foreclosed": foreclosure08,
+//            "2009 Foreclosed": foreclosure09,
+//            "2010 Foreclosed": foreclosure10,
+//            "2011 Foreclosed": foreclosure11,
+//            "2012 Foreclosed": foreclosure12,
+//            "2013 Foreclosed": foreclosure13,
+//            "2014 Foreclosed": foreclosure14            
+//        };
         
         var controlsLess40 = {
             "Pre-2008 Less Than $40,000": lessPrior,
@@ -358,18 +425,24 @@
             collapsed: false
         }).addTo(map);
         
-     
-        L.control.layers(null, controlsForeclosed, {
-            collapsed: false
-        }).addTo(map);
-             
-        L.control.layers(null, controlsLess40, {
+        L.control.layers(null, controlsTFC, {
             collapsed: false
         }).addTo(map);
         
           L.control.layers(null, controlsMFC, {
             collapsed: false
         }).addTo(map);
+        
+     
+//        L.control.layers(null, controlsForeclosed, {
+//            collapsed: false
+//        }).addTo(map);
+             
+        L.control.layers(null, controlsLess40, {
+            collapsed: false
+        }).addTo(map);
+        
+        
         
         
  
