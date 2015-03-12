@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+                                                                                
+"features": [
+{ "type": "Feature", "properties": { "PVANUM": "45536400", "NUM1": "133", "NUM2": null, "DIR": null, "NAME": "TWELFTH", "TYPE": "ST", "ADDRESS": "133 TWELFTH ST", "UNIT": null, "TAX": "01", "CLASS": "R", "PVA_ACRE": 0.158100, "CONDO": "NO", "CAB_SLIDE": null, "DATEENTRD": null, "Area": 0, "NELex_Conc": "133 TWELFTH ST", "NELex_Co_1": "0.1581", "NELex_Co_2": "WALTER EUGENE", "NELex_Co_3": "7", "NELex_Co_4": "10\/7\/2002", "NELex_Co_5": "47500", "NELex_Co_6": "86000", "NELex_Co_7": "1953", "NELex_Co_8": "R-1C-SINGLE FAMILY RESIDENTIAL", "NELex_Co_9": "MASTER COMMISSIONER SALE", "Foreclosed_YEAR": "2002" }, "geometry": { "type": "Polygon", "coordinates": [ [ [ -84.478730590743538, 38.062201852843245 ], [ -84.478636996904171, 38.062122086340892 ], [ -84.47903382498977, 38.061849361634088 ], [ -84.47913570657505, 38.061941440158201 ], [ -84.47874495614802, 38.062214038858059 ], [ -84.478730590743538, 38.062201852843245 ] ] ] } }
+]
+}

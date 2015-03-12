@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+                                                                                
+"features": [
+{ "type": "Feature", "properties": { "PVANUM": "14649700", "NUM1": "1029", "NUM2": null, "DIR": null, "NAME": "KEES", "TYPE": "RD", "ADDRESS": "1029 KEES RD", "UNIT": null, "TAX": "01", "CLASS": "R", "PVA_ACRE": 0.206600, "CONDO": "NO", "CAB_SLIDE": null, "DATEENTRD": null, "Area": 0, "NELex_Conc": "1029 KEES RD", "NELex_Co_1": "0.2066", "NELex_Co_2": "MORTON LAWRENCE M & HOPE T", "NELex_Co_3": "2", "NELex_Co_4": "1\/8\/2001", "NELex_Co_5": "64000", "NELex_Co_6": "92000", "NELex_Co_7": "1955", "NELex_Co_8": "R-1C-SINGLE FAMILY RESIDENTIAL", "NELex_Co_9": "MASTER COMMISSIONER SALE", "Foreclosed_YEAR": "2001" }, "geometry": { "type": "Polygon", "coordinates": [ [ [ -84.483159549637648, 38.063465983453639 ], [ -84.483318973394262, 38.063357309534666 ], [ -84.483653875043856, 38.063678584614195 ], [ -84.483607957170662, 38.063710857027303 ], [ -84.483503125794371, 38.06378458136254 ], [ -84.483159549637648, 38.063465983453639 ] ] ] } }
+]
+}

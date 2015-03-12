@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+                                                                                
+"features": [
+{ "type": "Feature", "properties": { "PVANUM": "44642260", "NUM1": "208", "NUM2": null, "DIR": null, "NAME": "BLUE GRASS", "TYPE": "AVE", "ADDRESS": "208 BLUE GRASS AVE", "UNIT": null, "TAX": "05", "CLASS": "R", "PVA_ACRE": 0.206600, "CONDO": null, "CAB_SLIDE": null, "DATEENTRD": "2011\/01\/11", "Area": 0, "NELex_Conc": "208 BLUE GRASS AVE", "NELex_Co_1": "0.2066", "NELex_Co_2": "WALTER EUGENE", "NELex_Co_3": "7", "NELex_Co_4": "3\/17\/2003", "NELex_Co_5": "31500", "NELex_Co_6": "60000", "NELex_Co_7": "1925", "NELex_Co_8": "R-1C-SINGLE FAMILY RESIDENTIAL", "NELex_Co_9": "MASTER COMMISSIONER SALE", "Foreclosed_YEAR": "2003" }, "geometry": { "type": "Polygon", "coordinates": [ [ [ -84.472180033547687, 38.060541123159865 ], [ -84.472593722211627, 38.060294093168366 ], [ -84.472716432848614, 38.060423287886096 ], [ -84.472303098236836, 38.060670110251309 ], [ -84.472180033547687, 38.060541123159865 ] ] ] } }
+]
+}
