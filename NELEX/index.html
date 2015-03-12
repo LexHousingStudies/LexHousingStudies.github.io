@@ -180,7 +180,7 @@
         
         var mortgage2006 = L.geoJson(mfc2006);
         
-        var mortage2007 = L.geoJson(mfc2007);
+        var mortgage2007 = L.geoJson(mfc2007);
         
         var mortgage2008 = L.geoJson(mfc2008);
         
@@ -316,6 +316,19 @@
             "2013 Vacant Properties": vacancy13
         };
         
+        var controlsMFC = {
+            "2005 Mortgage Foreclosure": mortgage2005,
+            "2006 Mortgage Foreclosure": mortgage2006,
+            "2007 Mortgage Foreclosure": mortgage2007,
+            "2008 Mortgage Foreclosure": mortgage2008,
+            "2009 Mortgage Foreclosure": mortgage2009,
+            "2010 Mortgage Foreclosure": mortgage2010,
+            "2011 Mortgage Foreclosure": mortgage2011,
+            "2012 Mortgage Foreclosure": mortgage2012,
+            "2013 Mortgage Foreclosure": mortgage2013,
+            "2014 Mortgage Foreclosure": mortgage2014
+        };
+        
         var controlsForeclosed = {
             "1998 Foreclosed": foreclosure98, 
             "1999 Foreclosed": foreclosure99,
@@ -345,6 +358,7 @@
             collapsed: false
         }).addTo(map);
         
+     
         L.control.layers(null, controlsForeclosed, {
             collapsed: false
         }).addTo(map);
@@ -353,13 +367,12 @@
             collapsed: false
         }).addTo(map);
         
+          L.control.layers(null, controlsMFC, {
+            collapsed: false
+        }).addTo(map);
         
-             var sourcesLayers = {
-        "<b style='color:#1f78b4'>Hydro</b>": geoJsonLayers.hydroLayer,
-        "<b style='color:#91cf60'>Natural Gas</b>": geoJsonLayers.gasLayer,
-        "<b style='color:#FFFF00; text-shadow: 0px 0px 1px #333;'>Nuclear</b>": geoJsonLayers.nuclearLayer
-    }
-        L.control.layers(null, sourcesLayers, { collapsed:false }).addTo(map);
+        
+ 
         
 
           
