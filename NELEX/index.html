@@ -86,7 +86,7 @@
 <!--    <input id='range' class='range' type='range' min='0' max='1.0' step='any' />-->
 
     <footer>
-        <p>Map created by MS, KS, LG, & RD</p>
+        <p>Map created by MS, KS, LG, & RD, using data from Lexington-Fayette Urban County Government</p>
 <!--
         <p>Additional information about the data and map goes here.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis urna magna, maximus nec laoreet sit amet, dictum ultricies nibh. Ut id auctor lacus. Nam a dolor et justo luctus luctus. Duis a elit eget risus dictum vehicula id eu elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed sed enim nisl. Vestibulum commodo imperdiet lacus, sed facilisis erat placerat sit amet. Nulla consequat malesuada neque eget aliquet. Integer non convallis nisl, gravida ultrices ex. Fusce nec vestibulum elit. Sed elementum lectus ipsum, vulputate elementum ex laoreet a. Aenean eu ex varius, varius felis vitae, efficitur nulla. Quisque pretium laoreet ante, in sodales dui vehicula at. Mauris eu sem sapien.
@@ -154,64 +154,76 @@
         
         var vacancy10 = L.geoJson(vacant2010, {
                 weight: 1,
-                fillColor: 'blue',
+                fillColor: '#33CC33',
+                color: '#33CC33',
                 fillOpacity: 0.8
         });
         
         var vacancy13 = L.geoJson(vacant2013, {
                 weight: 1,
                 fillColor: 'red',
+                color: 'red',
                 fillOpacity: 1
         });
         
         var foreclosure98 = L.geoJson(foreclosed98, {
-                fillOpacity: 0.5,
-                color: 'orange'
+                weight: 1,
+                fillOpacity: 1,
+                color: '#1975FF'
             });
         
         var foreclosure99 = L.geoJson(foreclosed99, {
-                fillOpacity: 0.5,
-                color: 'orange'
+                weight: 1,
+                fillOpacity: 1,
+                color: '#1975FF'
         });
         
         var foreclosure00 = L.geoJson(foreclosed00, {
-                fillOpacity: 0.5,
-                color: 'orange'
+                weight: 1,
+                fillOpacity: 1,
+                color: '#1975FF'
         });
         
         var foreclosure08 = L.geoJson(foreclosed08, {
-                fillOpacity: 0.5,
-                color: 'orange'
+                weight: 1,
+                fillOpacity: 1,
+                color: '#0052CC'
         });
         
         var foreclosure09 = L.geoJson(foreclosed09, {
-                fillOpacity: 0.5,
-                color: 'orange'
+                weight: 1,
+                fillOpacity: 1,
+                color: '#003D99'
         });
         
         var foreclosure10 = L.geoJson(foreclosed10, {
-                fillOpacity: 0.5,
-                color: 'orange'
+                weight: 1,
+                fillOpacity: 1,
+                color: '#003D99'
         });
         
         var foreclosure11 = L.geoJson(foreclosed11, {
-                fillOpacity: 0.5,
-                color: 'orange'
+                weight: 1,
+                fillOpacity: 1,
+                color: '#003D99'
         });
         
         var foreclosure12 = L.geoJson(foreclosed12, {
-                fillOpacity: 0.5,
-                color: 'orange'
+                weight: 1,
+                fillOpacity: 1,
+                color: '#003D99'
         });
         
         var foreclosure13 = L.geoJson(foreclosed13, {
-                fillOpacity: 0.5,
-                color: 'orange'
+                weight: 1,
+                fillOpacity: 1,
+                color: '#003D99'
         });
         
         var foreclosure14 = L.geoJson(foreclosed14, {
-                fillOpacity: 0.5,
-                color: 'orange'
+                weight: 1,
+                fillOpacity: 1,
+                color: '#003D99'
         });
         
         var lessPrior = L.geoJson(less40Prior, {
@@ -236,36 +248,36 @@
         
         var less2010 = L.geoJson(less402010, {
                 weight: 1,
-                color: 'yellow',
-                fillColor: 'yellow',
+                color: 'purple',
+                fillColor: 	'purple',
                 fillOpacity: 1
         });
         
         var less2011 = L.geoJson(less402011, {
                 weight: 1,
-                color: 'yellow',
-                fillColor: 'yellow',
+                color: 'purple',
+                fillColor: 'purple',
                 fillOpacity: 1
         });
         
         var less2012 = L.geoJson(less402012, {
                 weight: 1,
-                color: 'yellow',
-                fillColor: 'yellow',
+                color: 'purple',
+                fillColor: 'purple',
                 fillOpacity: 1
         });
         
         var less2013 = L.geoJson(less402013, {
                 weight: 1,
-                color: 'yellow',
-                fillColor: 'yellow',
+                color: 'purple',
+                fillColor: 'purple',
                 fillOpacity: 1
         });
         
         var less2014 = L.geoJson(less402014, {
                 weight: 1,
-                color: 'yellow',
-                fillColor: 'yellow',
+                color: 'purple',
+                fillColor: 'purple',
                 fillOpacity: 1
         });
       
@@ -310,6 +322,14 @@
         L.control.layers(null, controlsLess40, {
             collapsed: false
         }).addTo(map);
+        
+        
+             var sourcesLayers = {
+        "<b style='color:#1f78b4'>Hydro</b>": geoJsonLayers.hydroLayer,
+        "<b style='color:#91cf60'>Natural Gas</b>": geoJsonLayers.gasLayer,
+        "<b style='color:#FFFF00; text-shadow: 0px 0px 1px #333;'>Nuclear</b>": geoJsonLayers.nuclearLayer
+    }
+        L.control.layers(null, sourcesLayers, { collapsed:false }).addTo(map);
         
 
           
