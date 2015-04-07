@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <title>GEO 509 Lex Housing</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: whitesmoke;
+            font-family: Lato, sans-serif;
+            color: #0D0000;
+        }
+        header {
+            padding: 2px 2.5%;
+        }
+        h1 {
+
+            display: inline;
+/*            margin-right: 20px;*/
+            margin: 10px auto;
+            color: #001323;
+        }
+        h2 {
+            display: inline-block;
+            color: #001323;
+        }
+        #map {            
+
+            width: 95%;
+            height: 900px;
+            margin: 10px auto;
+        }
+        footer {
+
+            padding: 2px 2.5%;
+            width: 80%;
+        }
+        p {
+            font-size: 1em;
+            color: #001323;
+        }
+        /* Additional style rules go here! */
+        
+        .blue {
+            color: #165bb6;
+        }
+        .red {
+            color: #cc0000;
+        }
+        .purple {
+            color: #b6165b; 
+        }
+        .range {
+            position:absolute;
+            width:100%;
+        }
+        .black {
+            color: #000000;
+        }
+        .orange {
+            color: #FF8C00;
+        }
+        
+        
+    </style>
+</head>
+
+<body>
+    <header>
+
+        <h1>Lexington's Uneven Housing Landscape</h1>
+
+<!--        <h2>Map Subtitle</h2>-->
+    </header>
+
+    <div id='map'></div>
+<!--    <input id='range' class='range' type='range' min='0' max='1.0' step='any' />-->
+
+    <footer>
+        <p>Map created by MS, KS, LG, & RD, using data from Lexington-Fayette Urban County Government</p>
+<!--
+        <p>Additional information about the data and map goes here.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis urna magna, maximus nec laoreet sit amet, dictum ultricies nibh. Ut id auctor lacus. Nam a dolor et justo luctus luctus. Duis a elit eget risus dictum vehicula id eu elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed sed enim nisl. Vestibulum commodo imperdiet lacus, sed facilisis erat placerat sit amet. Nulla consequat malesuada neque eget aliquet. Integer non convallis nisl, gravida ultrices ex. Fusce nec vestibulum elit. Sed elementum lectus ipsum, vulputate elementum ex laoreet a. Aenean eu ex varius, varius felis vitae, efficitur nulla. Quisque pretium laoreet ante, in sodales dui vehicula at. Mauris eu sem sapien.
+        </p>
+-->
+    </footer>
+
+    <script src ="NELex_ParcelClip.js"></script>
+    <script src ="NELex_Vacant_2010.js"></script>
+    <script src ="NELex_Vacant_2013.js"></script>    
+    <script src ="NELex%20foreclosed%201998.js"></script>
+    <script src ="NELex%20foreclosed%201999.js"></script>
+    <script src ="NELex%20foreclosed%202000.js"></script>
+    <script src ="NELex%20foreclosed%202008.js"></script>
+    <script src ="NELex%20foreclosed%202009.js"></script>
+    <script src ="NELex%20foreclosed%202010.js"></script>
+    <script src ="NELex%20foreclosed%202011.js"></script>
+    <script src ="NELex%20foreclosed%202012.js"></script>
+    <script src ="NELex%20foreclosed%202013.js"></script>
+    <script src ="NELex%20foreclosed%202014.js"></script>
+    <script src ="prior2008_lessthan40.js"></script>
+    <script src ="2008_lessthan40.js"></script>
+    <script src ="2009_lessthan40.js"></script>
+    <script src ="2010_lessthan40.js"></script>
+    <script src ="2011_lessthan40.js"></script>
+    <script src ="2012_lessthan40.js"></script>
+    <script src ="2013_lessthan40.js"></script>
+    <script src ="2014_lessthan40.js"></script>
+    <script src ="MFC.2005.js"></script>
+    <script src ="MFC.2006.js"></script>
+    <script src ="MFC.2007.js"></script>
+    <script src ="MFC.2008.js"></script>
+    <script src ="MFC.2009.js"></script>
+    <script src ="MFC.2010.js"></script>
+    <script src ="MFC.2011.js"></script>
+    <script src ="MFC.2012.js"></script>
+    <script src ="MFC.2013.js"></script>
+    <script src ="MFC.2014.js"></script>
+    <script src ="TFC.1995.js"></script>
+    <script src ="TFC.1997.js"></script>
+    <script src ="TFC.2000.js"></script>
+    <script src ="TFC.2001.js"></script>
+    <script src ="TFC.2002.js"></script>
+    <script src ="TFC.2003.js"></script>
+    <script src ="TFC.2004.js"></script>
+    <script src ="TFC.2005.js"></script>
+    <script src ="TFC.2006.js"></script>
+    <script src ="TFC.2007.js"></script>
+    <script src="TFC.2008.js"></script>
+    <script src="TFC.2009.js"></script>
+    <script src="TFC.2010.js"></script>
+    <script src="TFC.2011.js"></script>
+    <script src="TFC.2013.js"></script>
+    <script src="TFC.2014.js"></script>
+
+    
+    <script>
+        var map = L.map('map', {
+            center: [38.055,-84.483],
+            zoom: 15,
+            zoomControl: false,
+            dragging: true,
+        });
+        
+       var tiles = L.tileLayer('http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png', {
+	       attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>                    &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+	       subdomains: 'abcd',
+	       minZoom: 13,
+	       maxZoom: 18
+       });
+       
+
+//        var tiles = L.tileLayer('http://a{s}.acetate.geoiq.com/tiles/acetate-hillshading/{z}/{x}/{y}.png', {
+//            attribution: '&copy;2012 Esri & Stamen, Data from OSM and Natural Earth',
+//            subdomains: '0123',
+//            minZoom: 15,
+//            maxZoom: 15          THIS IS ORIGINAL BASEMAP
+//        });
+
+        map.addLayer(tiles);
+        
+        var base = L.geoJson(baseLayer, {
+                weight: 0.5,
+                color: 'black'
+            }).addTo(map);
+        
+//        var styleOptions = {
+//            fillOpacity: 0,
+//            weight: 1
+//        };
+        
+        var vacancy10 = L.geoJson(vacant2010, {
+                weight: 1,
+                fillColor: '#33CC33',
+                color: '#33CC33',
+                fillOpacity: 0.8
+        });
+        
+        var vacancy13 = L.geoJson(vacant2013, {
+                weight: 1,
+                fillColor: 'red',
+                color: 'red',
+                fillOpacity: 1
+        });
+        
+        var mortgage2005 = L.geoJson(mfc2005, {
+                fillColor: '#003D99'
+        });
+        
+        var mortgage2006 = L.geoJson(mfc2006, {
+                fillColor: '#003D99'
+        });
+        
+        var mortgage2007 = L.geoJson(mfc2007, {
+                fillColor: '#003D99'
+        });
+        
+        var mortgage2008 = L.geoJson(mfc2008, {
+                fillColor: '#003D99'
+        });
+        
+        var mortgage2009 = L.geoJson(mfc2009, {
+                fillColor: '#003D99'
+        });
+        
+        var mortgage2010 = L.geoJson(mfc2010, {
+                fillColor: '#003D99'
+        });
+        
+        var mortgage2011 = L.geoJson(mfc2011, {
+                fillColor: '#003D99'
+        });
+        
+        var mortgage2012 = L.geoJson(mfc2012, {
+                fillColor: '#003D99'
+        });
+        
+        var mortgage2013 = L.geoJson(mfc2013, {
+                fillColor: '#003D99'
+        });
+        
+        var mortgage2014 = L.geoJson(mfc2014, {
+                fillColor: '#003D99'
+        });
+        
+        var tax95 = L.geoJson(tfc95);
+        
+        var tax97 = L.geoJson(tfc97);
+        
+        var tax00 = L.geoJson(tfc00);
+        
+        var tax01 = L.geoJson(tfc01);
+        
+        var tax02 = L.geoJson(tfc02);
+        
+        var tax03 = L.geoJson(tfc03);
+        
+        var tax04 = L.geoJson(tfc04);
+        
+        var tax05 = L.geoJson(tfc05);
+        
+        var tax06 = L.geoJson(tfc06);
+        
+        var tax07 = L.geoJson(tfc07);
+        
+        var tax08 = L.geoJson(tfc08);
+        
+        var tax09 = L.geoJson(tfc09);
+        
+        var tax10 = L.geoJson(tfc10);
+        
+        var tax11 = L.geoJson(tfc11);
+        
+        var tax13 = L.geoJson(tfc13);
+        
+        var tax14 = L.geoJson(tfc14);
+        
+//        var foreclosure98 = L.geoJson(foreclosed98, {
+//                weight: 1,
+//                fillOpacity: 1,
+//                color: '#1975FF'
+//            });
+//        
+//        var foreclosure99 = L.geoJson(foreclosed99, {
+//                weight: 1,
+//                fillOpacity: 1,
+//                color: '#1975FF'
+//        });
+//        
+//        var foreclosure00 = L.geoJson(foreclosed00, {
+//                weight: 1,
+//                fillOpacity: 1,
+//                color: '#1975FF'
+//        });
+//        
+//        var foreclosure08 = L.geoJson(foreclosed08, {
+//                weight: 1,
+//                fillOpacity: 1,
+//                color: '#0052CC'
+//        });
+//        
+//        var foreclosure09 = L.geoJson(foreclosed09, {
+//                weight: 1,
+//                fillOpacity: 1,
+//                color: '#003D99'
+//        });
+//        
+//        var foreclosure10 = L.geoJson(foreclosed10, {
+//                weight: 1,
+//                fillOpacity: 1,
+//                color: '#003D99'
+//        });
+//        
+//        var foreclosure11 = L.geoJson(foreclosed11, {
+//                weight: 1,
+//                fillOpacity: 1,
+//                color: '#003D99'
+//        });
+//        
+//        var foreclosure12 = L.geoJson(foreclosed12, {
+//                weight: 1,
+//                fillOpacity: 1,
+//                color: '#003D99'
+//        });
+//        
+//        var foreclosure13 = L.geoJson(foreclosed13, {
+//                weight: 1,
+//                fillOpacity: 1,
+//                color: '#003D99'
+//        });
+//        
+//        var foreclosure14 = L.geoJson(foreclosed14, {
+//                weight: 1,
+//                fillOpacity: 1,
+//                color: '#003D99'
+//        });
+//        
+        var lessPrior = L.geoJson(less40Prior, {
+                weight: 1,
+                color: 'yellow',
+                fillColor: 'yellow',
+                fillOpacity: 1
+        });
+        
+        var less2008 = L.geoJson(less402008, {
+                weight: 1,
+                color: 'yellow',
+                fillColor: 'yellow',
+                fillOpacity: 1
+        })
+        var less2009 = L.geoJson(less402009, {
+                weight: 1,
+                color: 'yellow',
+                fillColor: 'yellow',
+                fillOpacity: 1
+        });
+        
+        var less2010 = L.geoJson(less402010, {
+                weight: 1,
+                color: 'purple',
+                fillColor: 	'purple',
+                fillOpacity: 1
+        });
+        
+        var less2011 = L.geoJson(less402011, {
+                weight: 1,
+                color: 'purple',
+                fillColor: 'purple',
+                fillOpacity: 1
+        });
+        
+        var less2012 = L.geoJson(less402012, {
+                weight: 1,
+                color: 'purple',
+                fillColor: 'purple',
+                fillOpacity: 1
+        });
+        
+        var less2013 = L.geoJson(less402013, {
+                weight: 1,
+                color: 'purple',
+                fillColor: 'purple',
+                fillOpacity: 1
+        });
+        
+        var less2014 = L.geoJson(less402014, {
+                weight: 1,
+                color: 'purple',
+                fillColor: 'purple',
+                fillOpacity: 1
+        });
+      
+        var controlsVacancy = {
+            "2010 Vacant Properties": vacancy10,
+            "2013 Vacant Properties": vacancy13
+        };
+        
+        var controlsMFC = {
+            "2005 Mortgage Foreclosure": mortgage2005,
+            "2006 Mortgage Foreclosure": mortgage2006,
+            "2007 Mortgage Foreclosure": mortgage2007,
+            "2008 Mortgage Foreclosure": mortgage2008,
+            "2009 Mortgage Foreclosure": mortgage2009,
+            "2010 Mortgage Foreclosure": mortgage2010,
+            "2011 Mortgage Foreclosure": mortgage2011,
+            "2012 Mortgage Foreclosure": mortgage2012,
+            "2013 Mortgage Foreclosure": mortgage2013,
+            "2014 Mortgage Foreclosure": mortgage2014
+        };
+        
+        var controlsTFC = {
+            "1995 Tax Foreclosure": tax95,
+            "1997 Tax Foreclosure": tax97,
+            "2000 Tax Foreclosure": tax00,
+            "2001 Tax Foreclosure": tax01,
+            "2002 Tax Foreclosure": tax02,
+            "2003 Tax Foreclosure": tax03,
+            "2004 Tax Foreclosure": tax04,
+            "2005 Tax Foreclosure": tax05,
+            "2006 Tax Foreclosure": tax06,
+            "2007 Tax Foreclosure": tax07,
+            "2008 Tax Foreclosure": tax08,
+            "2009 Tax Foreclosure": tax09,
+            "2010 Tax Foreclosure": tax10,
+            "2011 Tax Foreclosure": tax11,
+            "2013 Tax Foreclosure": tax13,
+            "2014 Tax Foreclosure": tax14
+            
+        };
+//        var controlsForeclosed = {
+//            "1998 Foreclosed": foreclosure98, 
+//            "1999 Foreclosed": foreclosure99,
+//            "2000 Foreclosed": foreclosure00,
+//            "2008 Foreclosed": foreclosure08,
+//            "2009 Foreclosed": foreclosure09,
+//            "2010 Foreclosed": foreclosure10,
+//            "2011 Foreclosed": foreclosure11,
+//            "2012 Foreclosed": foreclosure12,
+//            "2013 Foreclosed": foreclosure13,
+//            "2014 Foreclosed": foreclosure14            
+//        };
+        
+        var controlsLess40 = {
+            "Pre-2008 Less Than $40,000": lessPrior,
+            "2008 Less Than $40,000": less2008,
+            "2009 Less Than $40,000": less2009,
+            "2010 Less Than $40,000": less2010,
+            "2011 Less Than $40,000": less2011,
+            "2012 Less Than $40,000": less2012,
+            "2013 Less Than $40,000": less2013,
+            "2014 Less Than $40,000": less2014
+                                 
+        };        
+    
+         L.control.layers(null, controlsVacancy, {
+            collapsed: false
+        }).addTo(map);
+        
+        L.control.layers(null, controlsTFC, {
+            collapsed: false
+        }).addTo(map);
+        
+          L.control.layers(null, controlsMFC, {
+            collapsed: false
+        }).addTo(map);
+        
+     
+//        L.control.layers(null, controlsForeclosed, {
+//            collapsed: false
+//        }).addTo(map);
+             
+        L.control.layers(null, controlsLess40, {
+            collapsed: false
+        }).addTo(map);
+        
+        
+        
+        
+ 
+        
+
+          
+    </script>
+    
+</body>
+
+</html>
