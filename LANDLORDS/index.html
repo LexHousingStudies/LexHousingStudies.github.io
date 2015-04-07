@@ -20,28 +20,32 @@
             color: #0D0000;
         }
         header {
-            padding: 2px 2.5%;
+            padding: 6px 10%;
         }
         h1 {
-
-            display: inline;
-/*            margin-right: 20px;*/
-            margin: 10px auto;
-            color: #001323;
+            position: absolute;
+            z-index: 100;
+            top: 10px;
+            left: 60px;
+            padding: 8px 15px;
+            margin: 0;
+            color: whitesmoke;
+            font-size: 1.5em;
+            background: rgba(25,25,25,0.8);
+            border-radius: 5px;      
         }
         h2 {
             display: inline-block;
             color: #001323;
         }
         #map {            
-
-            width: 95%;
-            height: 900px;
-            margin: 10px auto;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            bottom: 0;
         }
         footer {
-
-            padding: 2px 2.5%;
+            padding: 6px 10%;
             width: 80%;
         }
         p {
@@ -77,7 +81,7 @@
 <body>
     <header>
 
-        <h1>Lexington's Uneven Housing Landscape</h1>
+        <h1>Spatial Reach of Landlords</h1>
 
 <!--        <h2>Map Subtitle</h2>-->
     </header>
@@ -85,14 +89,14 @@
     <div id='map'></div>
 <!--    <input id='range' class='range' type='range' min='0' max='1.0' step='any' />-->
 
+<!--
     <footer>
         <p>Map created by MS, KS, LG, & RD, using data from Lexington-Fayette Urban County Government</p>
-<!--
         <p>Additional information about the data and map goes here.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis urna magna, maximus nec laoreet sit amet, dictum ultricies nibh. Ut id auctor lacus. Nam a dolor et justo luctus luctus. Duis a elit eget risus dictum vehicula id eu elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed sed enim nisl. Vestibulum commodo imperdiet lacus, sed facilisis erat placerat sit amet. Nulla consequat malesuada neque eget aliquet. Integer non convallis nisl, gravida ultrices ex. Fusce nec vestibulum elit. Sed elementum lectus ipsum, vulputate elementum ex laoreet a. Aenean eu ex varius, varius felis vitae, efficitur nulla. Quisque pretium laoreet ante, in sodales dui vehicula at. Mauris eu sem sapien.
         </p>
--->
     </footer>
+-->
 
     <script src ="Ada%20Mae%20Clem.js"></script>
     <script src ="Caden%20Properties%20LLC.js"></script>
@@ -123,7 +127,7 @@
         var map = L.map('map', {
             center: [38.055,-84.483],
             zoom: 15,
-            zoomControl: false,
+            zoomControl: true,
             dragging: true,
         });
         
