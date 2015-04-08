@@ -121,6 +121,7 @@
     <script src ="Robert%20and%20Danita%20Hodge.js"></script>
     <script src ="WB%20Holdings%20LLC.js"></script>
     <script src ="West%20Side%20Properties%20LLC.js"></script>
+    <script src ="All.js"></script>
     
     
     <script>
@@ -160,16 +161,22 @@
         
 //        var allLandlords = L.geoJson(all);
         
-//        var layerGroup = L.GeoJSON(AdaMaeClem);
+//        var layerGroup = ();
 //        
 //        console.log(layerGroup);
+        
+        var allLandlords = L.geoJson(all, {
+            color: 'black',
+            weight: 1.75,
+            opacity: 1
+        });
         
         var AdaMaeClem = L.geoJson(adaMae, {
             color: '#003366',
             weight: 2,
             opacity: 1
         });
-        
+
         var cadenPropertiesLLC = L.geoJson(cadenProp, {
             color: '#006600',
             weight: 2,
@@ -218,43 +225,100 @@
             opacity: 1
         });
         
-        var ijInvestmentsLLC = L.geoJson(iJProp);
-        
-        var issaShalash = L.geoJson(shalash);
-        
-        var jamesJanetEstepp = L.geoJson(estepp);
-        
-        var jamesWaller = L.geoJson(waller);
-        
-        var joeJohnson = L.geoJson(johnson);
-        
-        var lexingtonHomeOwnershipComm2Inc = L.geoJson(lexHomeOwnInc);
-        
-        var martyClifford = L.geoJson(martyClif);
-        
-        var michaelSobolewski = L.geoJson(michaelSobol);
-        
-        var noLiCDC = L.geoJson(noLI);
-        
-        var omeadPropertiesLLC = L.geoJson(omeadProp);
-        
-        var paulFugazzi = L.geoJson(fugazzi);
-        
-        var robertDanitaHodge = L.geoJson(hodge);
-        
-        var wbHoldingsLLC = L.geoJson(wbHoldings);
-        
-        var westSidePropertiesLLC = L.geoJson(westSideProp);
-        
-        
-        map.on('click', function(e) {
-            
-            AdaMaeClem.addTo(map);
-        
+        var ijInvestmentsLLC = L.geoJson(iJProp, {
+            color: '#FF33CC',
+            weight: 2,
+            opacity: 1
         });
+        
+        var issaShalash = L.geoJson(shalash, {
+            color: '#999966',
+            weight: 2,
+            opacity: 1
+        });
+        
+        var jamesJanetEstepp = L.geoJson(estepp, {
+            color: '#660066',
+            weight: 2,
+            opacity: 1
+        });
+        
+        var jamesWaller = L.geoJson(waller, {
+            color: '#0033CC',
+            weight: 2,
+            opacity: 1
+        });
+        
+        var joeJohnson = L.geoJson(johnson, {
+            color: '#FF6600',
+            weight: 2,
+            opacity: 1
+        });
+        
+        var lexingtonHomeOwnershipComm2Inc = L.geoJson(lexHomeOwnInc, {
+            color: '#FFCC00',
+            weight: 2,
+            opacity: 1
+        });
+        
+        var martyClifford = L.geoJson(martyClif, {
+            color: '#996633',
+            weight: 2,
+            opacity: 1
+        });
+        
+        var michaelSobolewski = L.geoJson(michaelSobol, {
+            color: '#99CCFF',
+            weight: 2,
+            opacity: 1
+        });
+        
+        var noLiCDC = L.geoJson(noLI, {
+            color: '#669900',
+            weight: 2,
+            opacity: 1
+        });
+        
+        var omeadPropertiesLLC = L.geoJson(omeadProp, {
+            color: '#CC66FF',
+            weight: 2,
+            opacity: 1
+        });
+        
+        var paulFugazzi = L.geoJson(fugazzi, {
+            color: '#FF9933',
+            weight: 2,
+            opacity: 1
+        });
+        
+        var robertDanitaHodge = L.geoJson(hodge, {
+            color: '#4C4C4C',
+            weight: 2,
+            opacity: 1
+        });
+        
+        var wbHoldingsLLC = L.geoJson(wbHoldings, {
+            color: '#A34719',
+            weight: 2,
+            opacity: 1
+        });
+        
+        var westSidePropertiesLLC = L.geoJson(westSideProp, {
+            color: '#B22400',
+            weight: 2,
+            opacity: 1
+        });
+        
+        
+//        map.on('click', function(e) {
+//            
+//            AdaMaeClem.addTo(map);
+//        
+//        });
         
          
         var controlsLandlords = {
+            "SHOW ALL": allLandlords,
             "Ada Mae Clem": AdaMaeClem,
             "Caden Properties LLC": cadenPropertiesLLC,
             "Dixon Enterprises LLC": dixonEnterprisesLLC,
