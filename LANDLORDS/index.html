@@ -126,7 +126,7 @@
     <script>
         var map = L.map('map', {
             center: [38.055,-84.483],
-            zoom: 15,
+            zoom: 12,
             zoomControl: true,
             dragging: true,
         });
@@ -134,7 +134,7 @@
        var tiles = L.tileLayer('http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png', {
 	       attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>                    &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 	       subdomains: 'abcd',
-	       minZoom: 13,
+	       minZoom: 10,
 	       maxZoom: 18
        });
        
@@ -158,23 +158,65 @@
 //            weight: 1
 //        };
         
-        var AdaMaeClem = L.geoJson(adaMae);
+//        var allLandlords = L.geoJson(all);
         
-        var cadenPropertiesLLC = L.geoJson(cadenProp);
+//        var layerGroup = L.GeoJSON(AdaMaeClem);
+//        
+//        console.log(layerGroup);
         
-        var dixonEnterprisesLLC = L.geoJson(dixonEnterp);
+        var AdaMaeClem = L.geoJson(adaMae, {
+            color: '#003366',
+            weight: 2,
+            opacity: 1
+        });
         
-        var donaldRuthSchilling = L.geoJson(schilling);
+        var cadenPropertiesLLC = L.geoJson(cadenProp, {
+            color: '#006600',
+            weight: 2,
+            opacity: 1
+        });
         
-        var dustinBeatty =  L.geoJson(beatty);
+        var dixonEnterprisesLLC = L.geoJson(dixonEnterp, {
+            color: '#FF9900',
+            weight: 2,
+            opacity: 1
+        });
         
-        var emergencyManagementInc = L.geoJson(emergeManage);
+        var donaldRuthSchilling = L.geoJson(schilling, {
+            color: '#66CCFF',
+            weight: 2,
+            opacity: 1
+        });
         
-        var fchDevelopmentLLC = L.geoJson(fchDevel);
+        var dustinBeatty =  L.geoJson(beatty, {
+            color: '#CC00CC',
+            weight: 2,
+            opacity: 1
+        });
         
-        var foxDenProperties = L.geoJson(foxDenProp);
+        var emergencyManagementInc = L.geoJson(emergeManage, {
+            color: '#66FF33',
+            weight: 2,
+            opacity: 1
+        });
         
-        var hagermanCourtLLC = L.geoJson(hagermanCourt);
+        var fchDevelopmentLLC = L.geoJson(fchDevel, {
+            color: '#6600CC',
+            weight: 2,
+            opacity: 1
+        });
+        
+        var foxDenProperties = L.geoJson(foxDenProp, {
+            color: '#990000',
+            weight: 2,
+            opacity: 1
+        });
+        
+        var hagermanCourtLLC = L.geoJson(hagermanCourt, {
+            color: '#993300',
+            weight: 2,
+            opacity: 1
+        });
         
         var ijInvestmentsLLC = L.geoJson(iJProp);
         
@@ -204,6 +246,12 @@
         
         var westSidePropertiesLLC = L.geoJson(westSideProp);
         
+        
+        map.on('click', function(e) {
+            
+            AdaMaeClem.addTo(map);
+        
+        });
         
          
         var controlsLandlords = {
