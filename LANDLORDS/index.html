@@ -6,8 +6,9 @@
     <title>GEO 509 Lex Housing</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 
+     <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" />
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
     <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 
@@ -73,7 +74,69 @@
         .orange {
             color: #FF8C00;
         }
+        .leaflet-control-layers-expanded {
+            padding: 6px 8px;
+            background: rgba(75,75,75,0.8);
+            color: whitesmoke
+        }
+        .leaflet-control-layers {
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            border-radius: 5px;
+            width: 160px;
+        }
+/*
+        #showAll {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+        }
         
+        #removeAll {
+            position: absolute;
+            bottom: 40px;
+            left: 20px;
+        }
+*/
+        
+        #ui-control{
+        
+            margin: 15px 15px 0 0;
+            color: whitesmoke;
+            font-size: 1.5em;
+/*            background: rgba(25,25,25,0.8);*/
+            border-radius: 5px; 
+        }
+        
+         #ui-control ul{
+             list-style-type: none;
+             padding: 0;
+             margin: 0;
+         }
+        
+        #ui-control ul li {
+            padding: 4px 12px;
+            margin: 0;
+            border-bottom: 1px solid #;
+            font-size: .8em;
+            background: #444;
+            cursor: pointer;
+            
+        }
+        
+         #ui-control ul li:hover {
+             opacity: .8;
+         }
+        
+         #ui-control ul li.selected {
+              background: #888;
+         }
+        #ui-control ul li.selected:hover {
+            opacity: .8;  
+        }
+        #ui-control ul#masterControl li {
+           font-weight: bold; 
+            font-size: 1em;
+        }
         
     </style>
 </head>
@@ -87,6 +150,42 @@
     </header>
 
     <div id='map'></div>
+<!--
+    <button id="removeAll">remove all layers</button>
+     <button id="showAll">show all layers</button>
+-->
+    <div id="ui-control">
+        <ul id="masterControl">
+           <li id="showAll" class="selected">Show All</li>
+           <li id="removeAll">Remove All</li>
+        </ul>
+        <ul>
+            <li id="AdaMaeClem" class="selected">Ada Mae Clem</li>
+            <li id="cadenPropertiesLLC" class="selected">Caden Properties LLC</li>
+            <li id="dixonEnterprisesLLC" class="selected">Dixon Enterprises LLC</li>
+            <li id="donaldRuthSchilling" class="selected">Donald and Ruth Schilling</li>
+            <li id="dustinBeatty" class="selected">Dustin Beatty</li>
+            <li id="emergencyManagementInc" class="selected">Emergency Management Inc</li>
+            <li id="fchDevelopmentLLC" class="selected">FCH Development LLC</li>
+            <li id="foxDenProperties" class="selected">Fox Den Properties LLC</li>
+            <li id="hagermanCourtLLC" class="selected">Hagerman Court LLC</li>
+            <li id="ijInvestmentsLLC" class="selected">I &amp; J Investments LLC</li>
+            <li id="issaShalash" class="selected">Issa Shalash</li>
+            <li id="jamesJanetEstepp" class="selected">James and Janet Estepp</li>
+            <li id="jamesWaller" class="selected">James Waller</li>
+            <li id="joeJohnson" class="selected">Joseph E Johnson</li>
+            <li id="lexingtonHomeOwnershipComm2Inc" class="selected">Lexington Home Ownership Comm II Inc</li>
+            <li id="martyClifford" class="selected">Marty Clifford</li>
+            <li id="michaelSobolewski" class="selected">Michael Sobolewski</li>
+            <li id="noLiCDC" class="selected">NoLi CDC</li>
+            <li id="omeadPropertiesLLC" class="selected">Omead Properties LLC</li>
+            <li id="paulFugazzi" class="selected">Paul Fugazzi</li>
+            <li id="robertDanitaHodge" class="selected">Robert and Danita Hodge</li>
+            <li id="wbHoldingsLLC" class="selected">WB Holdings LLC</li>
+            <li id="westSidePropertiesLLC" class="selected">West Side Properties LLC</li>
+        </ul>
+    
+    </div>
 <!--    <input id='range' class='range' type='range' min='0' max='1.0' step='any' />-->
 
 <!--
@@ -165,149 +264,230 @@
 //        
 //        console.log(layerGroup);
         
-        var allLandlords = L.geoJson(all, {
-            color: 'black',
-            weight: 1.75,
+        var commonOptions = {
+             weight: 2,
             opacity: 1
-        });
+        }
+        
+//        var allLandlords = L.geoJson(all, {
+//            color: 'black',
+//            weight: 1.75,
+//            opacity: 1
+//        });
+         // var allLandlords = L.geoJson(all, commonOptions).setStyle({color: 'black'});
+        
+        var allLandlords = L.layerGroup().addTo(map);
         
         var AdaMaeClem = L.geoJson(adaMae, {
             color: '#003366',
             weight: 2,
-            opacity: 1
+            opacity: 1,
+            id: 'AdaMaeClem'
         });
+        
+       allLandlords.addLayer(AdaMaeClem);
 
         var cadenPropertiesLLC = L.geoJson(cadenProp, {
             color: '#006600',
             weight: 2,
-            opacity: 1
+            opacity: 1,
+            id: 'cadenPropertiesLLC'
         });
+        
+         allLandlords.addLayer(cadenPropertiesLLC);
         
         var dixonEnterprisesLLC = L.geoJson(dixonEnterp, {
             color: '#FF9900',
             weight: 2,
-            opacity: 1
+            opacity: 1, 
+            id: 'dixonEnterprisesLLC'
         });
+        
+        allLandlords.addLayer(dixonEnterprisesLLC);
         
         var donaldRuthSchilling = L.geoJson(schilling, {
             color: '#66CCFF',
             weight: 2,
-            opacity: 1
+            opacity: 1,
+            id: 'donaldRuthSchilling'
         });
+        
+        allLandlords.addLayer(donaldRuthSchilling);
         
         var dustinBeatty =  L.geoJson(beatty, {
             color: '#CC00CC',
             weight: 2,
-            opacity: 1
+            opacity: 1,
+            id: 'dustinBeatty'
         });
+        
+        allLandlords.addLayer(dustinBeatty);
         
         var emergencyManagementInc = L.geoJson(emergeManage, {
             color: '#66FF33',
             weight: 2,
-            opacity: 1
+            opacity: 1, 
+            id: 'emergencyManagementInc'
         });
+        
+        allLandlords.addLayer(emergencyManagementInc);
         
         var fchDevelopmentLLC = L.geoJson(fchDevel, {
             color: '#6600CC',
             weight: 2,
-            opacity: 1
+            opacity: 1,
+            id: 'fchDevelopmentLLC'
         });
+        
+        allLandlords.addLayer(fchDevelopmentLLC);
         
         var foxDenProperties = L.geoJson(foxDenProp, {
             color: '#990000',
             weight: 2,
-            opacity: 1
+            opacity: 1,
+            id: 'foxDenProperties'
         });
+        
+        allLandlords.addLayer(foxDenProperties);
         
         var hagermanCourtLLC = L.geoJson(hagermanCourt, {
             color: '#993300',
             weight: 2,
-            opacity: 1
+            opacity: 1,
+            id: 'hagermanCourtLLC'
         });
+        
+        allLandlords.addLayer(hagermanCourtLLC);
         
         var ijInvestmentsLLC = L.geoJson(iJProp, {
             color: '#FF33CC',
             weight: 2,
-            opacity: 1
+            opacity: 1,
+            id: 'ijInvestmentsLLC'
         });
+        
+        allLandlords.addLayer(ijInvestmentsLLC);
         
         var issaShalash = L.geoJson(shalash, {
             color: '#999966',
             weight: 2,
-            opacity: 1
+            opacity: 1,
+            id: 'issaShalash'
         });
+        
+        allLandlords.addLayer(issaShalash);
         
         var jamesJanetEstepp = L.geoJson(estepp, {
             color: '#660066',
             weight: 2,
-            opacity: 1
+            opacity: 1,
+            id: 'jamesJanetEstepp'
         });
+        
+        allLandlords.addLayer(jamesJanetEstepp);
         
         var jamesWaller = L.geoJson(waller, {
             color: '#0033CC',
             weight: 2,
-            opacity: 1
+            opacity: 1,
+            id: 'jamesWaller'
         });
+        
+        allLandlords.addLayer(jamesWaller);
         
         var joeJohnson = L.geoJson(johnson, {
             color: '#FF6600',
             weight: 2,
-            opacity: 1
+            opacity: 1,
+            id: 'joeJohnson'
         });
+        
+        allLandlords.addLayer(joeJohnson);
         
         var lexingtonHomeOwnershipComm2Inc = L.geoJson(lexHomeOwnInc, {
             color: '#FFCC00',
             weight: 2,
-            opacity: 1
+            opacity: 1,
+            id: 'lexingtonHomeOwnershipComm2Inc'
         });
+        
+        allLandlords.addLayer(lexingtonHomeOwnershipComm2Inc);
         
         var martyClifford = L.geoJson(martyClif, {
             color: '#996633',
             weight: 2,
-            opacity: 1
+            opacity: 1,
+            id: 'martyClifford'
         });
+        
+        allLandlords.addLayer(martyClifford);
         
         var michaelSobolewski = L.geoJson(michaelSobol, {
             color: '#99CCFF',
             weight: 2,
-            opacity: 1
+            opacity: 1,
+            id: 'michaelSobolewski'
         });
+        
+        allLandlords.addLayer(michaelSobolewski);
         
         var noLiCDC = L.geoJson(noLI, {
             color: '#669900',
             weight: 2,
-            opacity: 1
+            opacity: 1,
+            id: 'noLiCDC'
         });
+        
+        allLandlords.addLayer(noLiCDC);
         
         var omeadPropertiesLLC = L.geoJson(omeadProp, {
             color: '#CC66FF',
             weight: 2,
-            opacity: 1
+            opacity: 1,
+            id: 'omeadPropertiesLLC'
         });
+        
+        allLandlords.addLayer(omeadPropertiesLLC);
         
         var paulFugazzi = L.geoJson(fugazzi, {
             color: '#FF9933',
             weight: 2,
-            opacity: 1
+            opacity: 1,
+            id: 'paulFugazzi'
         });
+        
+        allLandlords.addLayer(paulFugazzi);
         
         var robertDanitaHodge = L.geoJson(hodge, {
             color: '#4C4C4C',
             weight: 2,
-            opacity: 1
+            opacity: 1,
+            id: 'robertDanitaHodge'
         });
+        
+        allLandlords.addLayer(robertDanitaHodge);
         
         var wbHoldingsLLC = L.geoJson(wbHoldings, {
             color: '#A34719',
             weight: 2,
-            opacity: 1
+            opacity: 1,
+            id: 'wbHoldingsLLC'
         });
+        
+        allLandlords.addLayer(wbHoldingsLLC);
         
         var westSidePropertiesLLC = L.geoJson(westSideProp, {
             color: '#B22400',
             weight: 2,
-            opacity: 1
+            opacity: 1,
+            id: 'westSidePropertiesLLC'
         });
+        
+        allLandlords.addLayer(westSidePropertiesLLC);
+        
+      
+        
+        //allLandlords.addLayer(AdaMaeClem);
         
         
 //        map.on('click', function(e) {
@@ -316,9 +496,11 @@
 //        
 //        });
         
+        //var layersArray = [AdaMaeClem,cadenPropertiesLLC,dixonEnterprisesLLC,donaldRuthSchilling, dustinBeatty, emergencyManagementInc];
+        
          
         var controlsLandlords = {
-            "SHOW ALL": allLandlords,
+//            "SHOW ALL": allLandlords,
             "Ada Mae Clem": AdaMaeClem,
             "Caden Properties LLC": cadenPropertiesLLC,
             "Dixon Enterprises LLC": dixonEnterprisesLLC,
@@ -345,9 +527,88 @@
         };
                
     
-         L.control.layers(null, controlsLandlords, {
-            collapsed: false
-        }).addTo(map);
+//         L.control.layers(null, controlsLandlords, {
+//            collapsed: false
+//        }).addTo(map);
+        
+        
+         var info = L.control({position: 'topright'});
+
+        info.onAdd = function(map) {
+
+            var div = L.DomUtil.get('ui-control');
+
+            return div;  
+
+        }
+        info.addTo(map);
+        
+//        $("#AdaMaeClem").mouseover(function(e) {
+//           var target = $(this).attr('id');
+//            console.log(target);
+//           allLandlords.eachLayer(function(layer){
+//               if(layer.options.id == target){
+//                    allLandlords.removeLayer(layer);
+//               }
+//           });
+//        });
+        
+//            for(var i =0; i < layersArray.length;i++){
+//                var test = String(layersArray[i]);
+//                console.log(test);
+//            }
+        
+        var layersArray = [];
+        for(var lord in controlsLandlords){
+            
+            var lordId = controlsLandlords[lord].options.id;
+            layersArray.push(controlsLandlords[lord]);
+            
+            $("#"+lordId).click(function(e) {
+                 var target = $(this).attr('id');
+                 if($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+                    allLandlords.eachLayer(function(layer){
+                       if(layer.options.id == target){
+                            allLandlords.removeLayer(layer);
+                       }
+                   });
+                } else {
+                 $(this).addClass('selected');
+                   for(var i =0; i < layersArray.length;i++){
+                       if(layersArray[i].options.id == target){
+                            allLandlords.addLayer(layersArray[i]);  
+                       }
+                    }
+                                
+                }
+            
+            });
+        
+        }
+        
+
+        
+        
+        
+        $("#removeAll").click(function() {
+            allLandlords.eachLayer(function(layer){
+               allLandlords.removeLayer(layer);
+            });
+             $("#ui-control li").removeClass('selected');
+             $("#removeAll").addClass("selected");
+            
+        });
+        
+        $("#showAll").click(function() {
+            for(var i =0; i < layersArray.length;i++){
+                allLandlords.addLayer(layersArray[i]);   
+            }
+            $("#ui-control li").addClass('selected');
+            $("#removeAll").removeClass("selected");
+             $("#showAll").addClass("selected");
+        });
+        
         
           
     </script>
