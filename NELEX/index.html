@@ -17,17 +17,22 @@
             padding: 0;
             background: whitesmoke;
             font-family: Lato, sans-serif;
-            color: #0D0000;
+            color: whitesmoke;
         }
         header {
             padding: 6px 10%;
         }
         h1 {
-
-            display: inline;
-/*            margin-right: 20px;*/
-            margin: 10px auto;
-            color: #001323;
+            position: absolute;
+            z-index: 100;
+            top: 10px;
+            left: 60px;
+            padding: 8px 15px;
+            margin: 0;
+            color: whitesmoke;
+            font-size: 1.5em;
+            background: rgba(25,25,25,0.8);
+            border-radius: 5px;  
         }
         h2 {
             display: inline-block;
@@ -36,13 +41,9 @@
         #map {            
             position: absolute;
             width: 100%;
+            height: 1000px;
             top: 0;
             bottom: 0;
-        }
-        footer {
-
-            padding: 2px 2.5%;
-            width: 80%;
         }
         p {
             font-size: 1em;
@@ -69,6 +70,10 @@
         .orange {
             color: #FF8C00;
         }
+        .leaflet-control-layers-expanded {
+            color: whitesmoke;
+            background: rgba(25,25,25,0.8);
+        }
         
         
     </style>
@@ -85,14 +90,6 @@
     <div id='map'></div>
 <!--    <input id='range' class='range' type='range' min='0' max='1.0' step='any' />-->
 
-    <footer>
-        <p>Map created by MS, KS, LG, & RD, using data from Lexington-Fayette Urban County Government</p>
-<!--
-        <p>Additional information about the data and map goes here.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis urna magna, maximus nec laoreet sit amet, dictum ultricies nibh. Ut id auctor lacus. Nam a dolor et justo luctus luctus. Duis a elit eget risus dictum vehicula id eu elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed sed enim nisl. Vestibulum commodo imperdiet lacus, sed facilisis erat placerat sit amet. Nulla consequat malesuada neque eget aliquet. Integer non convallis nisl, gravida ultrices ex. Fusce nec vestibulum elit. Sed elementum lectus ipsum, vulputate elementum ex laoreet a. Aenean eu ex varius, varius felis vitae, efficitur nulla. Quisque pretium laoreet ante, in sodales dui vehicula at. Mauris eu sem sapien.
-        </p>
--->
-    </footer>
 
     <script src ="NELex_ParcelClip.js"></script>
     <script src ="NELex_Vacant_2010.js"></script>
