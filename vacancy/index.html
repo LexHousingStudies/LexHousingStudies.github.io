@@ -50,26 +50,7 @@
             color: #001323;
         }
         /* Additional style rules go here! */
-        
-        .blue {
-            color: #165bb6;
-        }
-        .red {
-            color: #cc0000;
-        }
-        .purple {
-            color: #b6165b; 
-        }
-        .range {
-            position:absolute;
-            width:100%;
-        }
-        .black {
-            color: #000000;
-        }
-        .orange {
-            color: #FF8C00;
-        }
+       
         
     </style>
 </head>
@@ -85,11 +66,14 @@
     
     </div>
       
+    <script src = "vprc_2015.js"></script>
     
     <script>
         var map = L.map('map', {
             center: [38.055,-84.483],
             zoom: 12,
+            minZoom: 10,
+            maxZoom: 16,
             zoomControl: true,
             dragging: true,
         });
@@ -98,7 +82,7 @@
 	       attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>                    &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 	       subdomains: 'abcd',
 	       minZoom: 10,
-	       maxZoom: 18
+	       maxZoom: 16
        });
         
 
@@ -106,7 +90,14 @@
         
         L.tileLayer('http://lexhousingstudies.github.io/lexington-parcels/{z}/{x}/{y}.png').addTo(map);       
 
-//        add vacant/abandoned point data
+        var vacant = L.geoJson(vprc, {
+            color: '#cc0000',
+            opacity: 1,
+            fillColor: '#cc0000',
+            fillOpacity: 1,
+            weight: 2.5,
+        }).addTo(map);
+
         
 ////      add 'click' or 'hover' action to point data
 //        create pop-up box w info
