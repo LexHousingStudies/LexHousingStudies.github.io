@@ -90,18 +90,20 @@
         
         L.tileLayer('http://lexhousingstudies.github.io/lexington-parcels/{z}/{x}/{y}.png').addTo(map);       
 
+//        add vacancy data
         var vacant = L.geoJson(vprc, {
             color: '#cc0000',
             opacity: 1,
             fillColor: '#cc0000',
             fillOpacity: 1,
-            weight: 2.5,
-        }).addTo(map);
-
+            weight: 3,
+        }      
+        ).addTo(map);
         
-////      add 'click' or 'hover' action to point data
-//        create pop-up box w info
-//        
+//        build pop-up for each parcel
+    
+        
+
        
         
           
