@@ -6,7 +6,7 @@
     <title>Multi-Scalar Abandonment</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 
-     <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" />
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
@@ -140,11 +140,11 @@
         
     </style>
 </head>
-
+    
 <body>
     <header>
 
-        <h1>Lexington Vacant/Abandoned Properties, 2015</h1>
+        <h1>Multi-Scalar Abandonment, 2015</h1>
 
 <!--        <h2>Map Subtitle</h2>-->
     </header>
@@ -154,17 +154,6 @@
     </div>
 <!--    <input id='range' class='range' type='range' min='0' max='1.0' step='any' />-->
 
-<!--
-    <footer>
-        <p>Map created by MS, KS, LG, & RD, using data from Lexington-Fayette Urban County Government</p>
-        <p>Additional information about the data and map goes here.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis urna magna, maximus nec laoreet sit amet, dictum ultricies nibh. Ut id auctor lacus. Nam a dolor et justo luctus luctus. Duis a elit eget risus dictum vehicula id eu elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed sed enim nisl. Vestibulum commodo imperdiet lacus, sed facilisis erat placerat sit amet. Nulla consequat malesuada neque eget aliquet. Integer non convallis nisl, gravida ultrices ex. Fusce nec vestibulum elit. Sed elementum lectus ipsum, vulputate elementum ex laoreet a. Aenean eu ex varius, varius felis vitae, efficitur nulla. Quisque pretium laoreet ante, in sodales dui vehicula at. Mauris eu sem sapien.
-        </p>
-    </footer>
--->
-
-    <script src ="Lex_parcel.js"></script>
-      
     
     <script>
         var map = L.map('map', {
@@ -184,17 +173,12 @@
 
         map.addLayer(tiles);
         
+        L.tileLayer('http://lexhousingstudies.github.io/lexington-parcels/{z}/{x}/{y}.png').addTo(map);       
 
-        
-          var base = L.geoJson(baseLayer, {
-                weight: 1,
-                color: 'black'
-            }).addTo(map);
-        
-//        var base = L.geoJson(baseLayer, {
-//                weight: 0.5,
-//                color: 'black'
-//            }).addTo(map);
+        var abandoned = L.geoJson(multiscalar).addTo(map);
+
+    
+
         
 //        var styleOptions = {
 //            fillOpacity: 0,
