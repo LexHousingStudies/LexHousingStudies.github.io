@@ -53,12 +53,6 @@
             top: 0;
             bottom: 0;
         }
-        p {
-            font-size: 1em;
-            color: #001323;
-        }
-        /* Additional style rules go here! */
-       
         
     </style>
 </head>
@@ -99,6 +93,7 @@
 
         map.addLayer(tiles);
         
+//        add parcel layer        
         L.tileLayer('http://lexhousingstudies.github.io/lexington-parcels/{z}/{x}/{y}.png').addTo(map);       
 
 //        add vacancy data
