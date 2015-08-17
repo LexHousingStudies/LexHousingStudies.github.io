@@ -5,32 +5,140 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="style.css" />
-  <script src="//libs.cartocdn.com/cartodb.js/v3/3.11/cartodb.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>    
-  <script src='app.js'></script>
+  
+  <style type='cartocss/html' id='all'>
+    #vacant_owners_allproperties {
+     line-width: 0.75;
+     line-opacity: 0.35;
+     line-comp-op: color-dodge;
+    }
+    #vacant_owners_allproperties[is_vprc="VPRC"] {
+     line-color: #e74c3c;
+    }
+    #vacant_owners_allproperties[is_vprc=null] {
+     line-color: #9b59b6;
+    }
+  </style>
+  <style type='cartocss/html' id='finnell'>
+  #vacant_owners_allproperties {
+     line-width: 0;
+     line-opacity: 0;
+  }
+  #vacant_owners_allproperties[lexvacan_1='21'] {
+     line-width: 0.75;
+     line-color: #2ecc71;
+     line-opacity: 0.35;
+    #vacant_owners_allproperties[is_vprc="VPRC"] {
+     line-color: #e74c3c;
+     line-opacity: 0.75;
+     line-width: 2;
+    }
+  }
+  </style>
+  <style type='cartocss/html' id='morton'>
+  #vacant_owners_allproperties {
+   line-width: 0;
+   line-opacity: 0;
+  }
+  #vacant_owners_allproperties[lexvacan_1='49'] {
+     line-width: 0.75;
+     line-color: #3498db;
+     line-opacity: 0.35;
+     line-comp-op: color-dodge;
+    #vacant_owners_allproperties[is_vprc="VPRC"] {
+     line-color: #e74c3c;
+     line-opacity: 0.75;
+     line-width: 2;
+    }
+  }
+  </style>
+  <style type='cartocss/html' id='omead'>
+  #vacant_owners_allproperties {
+   line-width: 0;
+   line-opacity: 0;
+  }
+  #vacant_owners_allproperties[lexvacan_1='54'] {
+     line-width: 0.75;
+     line-color: #3498db;
+     line-opacity: 0.35;
+     line-comp-op: color-dodge;
+    #vacant_owners_allproperties[is_vprc="VPRC"] {
+     line-color: #e74c3c;
+     line-opacity: 0.75;
+     line-width: 2;
+    }
+  }
+  </style>
+  <style type='cartocss/html' id='johnson'>
+  #vacant_owners_allproperties {
+   line-width: 0;
+   line-opacity: 0;
+  }
+  #vacant_owners_allproperties[lexvacan_1='37'] {
+     line-width: 0.75;
+     line-color: #3498db;
+     line-opacity: 0.35;
+     line-comp-op: color-dodge;
+    #vacant_owners_allproperties[is_vprc="VPRC"] {
+     line-color: #e74c3c;
+     line-opacity: 0.75;
+     line-width: 2;
+    }
+  }
+  </style>
+  <style type='cartocss/html' id='approp'>
+  #vacant_owners_allproperties {
+   line-width: 0;
+   line-opacity: 0;
+  }
+  #vacant_owners_allproperties[lexvacan_1='01'] {
+     line-width: 0.75;
+     line-color: #3498db;
+     line-opacity: 0.35;
+     line-comp-op: color-dodge;
+    #vacant_owners_allproperties[is_vprc="VPRC"] {
+     line-color: #e74c3c;
+     line-opacity: 0.75;
+     line-width: 2;
+    }
+  }
+  </style>
+  <style type='cartocss/html' id='lowkey'>
+  #vacant_owners_allproperties {
+   line-width: 0;
+   line-opacity: 0;
+  }
+  #vacant_owners_allproperties[lexvacan_1='44'] {
+     line-width: 0.75;
+     line-color: #3498db;
+     line-opacity: 0.35;
+     line-comp-op: color-dodge;
+    #vacant_owners_allproperties[is_vprc="VPRC"] {
+     line-color: #e74c3c;
+     line-opacity: 0.75;
+     line-width: 2;
+    }
+  }
+  </style>
+  
 </head>
-
 <body onload="init()">
-  <h1>Multi-Scalar Abandonment<br><small>Properties of owners with vacant properties</small></h1>
+  <h1>Multi-Scalar Abandonment<br><small>Properties of owners with vacant properties<br>Red lines denote a connection to a property on the VPRC list</small></h1>
   <div id='map'></div>
-  <!-- <div id='menu'>
-    <a href="#finnell" id="finnell" class="button finnell">FINNELL PROPERTIES</a> 
-    <a href="#all" id="all" class="button selected">ALL</a>
-  </div> -->
 
   <div class="btn-group-vertical" id="menu" role="group" aria-label="...">
-  <button type="button" class="btn btn-default selected selectable" id="all">All <span class="badge">795</span></button>
-  <button type="button" class="btn btn-default selectable" id="finnell">Finnell Properties <span class="badge">17</span></button>
+  <button type="button" class="btn btn-default all selected selectable" data="all" data-type="cartocss">All <span class="badge">795</span></button>
+  <button type="button" class="btn btn-default finnell selectable" data="finnell" data-type="cartocss">Finnell Properties <span class="badge">17</span></button>
   <button type="button" class="btn btn-default top-five-head"><strong>Top-5 Property Owners</strong></button>
-  <button type="button" class="btn btn-default top-five selectable" id="morton">Morton Properties <span class="badge">165</span></button>
-  <button type="button" class="btn btn-default top-five selectable" id="omead">Omead Properties <span class="badge">52</span></button>
-  <button type="button" class="btn btn-default top-five selectable" id="johnson">Joe Johnson Properties <span class="badge">46</span></button>
-  <button type="button" class="btn btn-default top-five selectable" id="approp">A &amp; P Realty Properties <span class="badge">42</span></button>
-  <button type="button" class="btn btn-default top-five selectable" id="lowkey">Low Key Properties <span class="badge">40</span></button>
+  <button type="button" class="btn btn-default top-five selectable" data="morton" data-type="cartocss">Morton Properties <span class="badge">165</span></button>
+  <button type="button" class="btn btn-default top-five selectable" data="omead" data-type="cartocss">Omead Properties <span class="badge">52</span></button>
+  <button type="button" class="btn btn-default top-five selectable" data="johnson" data-type="cartocss">Joe Johnson Properties <span class="badge">46</span></button>
+  <button type="button" class="btn btn-default top-five selectable" data="approp" data-type="cartocss">A &amp; P Realty Properties <span class="badge">42</span></button>
+  <button type="button" class="btn btn-default top-five selectable" data="lowkey" data-type="cartocss">Low Key Properties <span class="badge">40</span></button>
 </div>
-
-  <script>
-
-  </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//libs.cartocdn.com/cartodb.js/v3/3.11/cartodb.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>    
+<script src='app.js'></script>
 </body>
 </html>
