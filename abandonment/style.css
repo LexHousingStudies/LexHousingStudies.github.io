@@ -44,13 +44,13 @@ html, body {
 #menu .selectable {
   cursor: pointer;
 }
-#menu #all.selected,
-#menu #all:hover { 
+#menu .all.selected,
+#menu .all:hover { 
   color: #fff;
   background: #9b59b6;
 }
-#menu #finnell.selected,
-#menu #finnell:hover { 
+#menu .finnell.selected,
+#menu .finnell:hover { 
   color: #fff;
   background: #2ecc71;
 }
