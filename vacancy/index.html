@@ -97,15 +97,33 @@
         L.tileLayer('http://lexhousingstudies.github.io/lexington-parcels/{z}/{x}/{y}.png').addTo(map);       
 
 //        add vacancy data
-        var vacant = L.geoJson(vprc, {
+        
+        var vacantStyle = {
             color: '#cc0000',
             opacity: 1,
-            fillColor: '#cc0000',
-            fillOpacity: 1,
+            fillColor: 1,
             weight: 3,
-        }      
-        ).addTo(map);
+        };
         
+        var vacant = L.geoJson(vprc, {
+           style: vacantStyle,
+           onEachFeature: function(features, layer) {
+               var props = features.properties;
+               
+               var content = "<b>"+props.ADDRESS+"</b><br>"+ "Lexington, KY "+
+                    props["VPRC App_4"];
+               
+               layer.bindPopup(content);
+               
+           }
+        }).addTo(map);
+        
+        
+        
+       
+     
+        
+       
 //        build pop-up for each parcel
     
         
