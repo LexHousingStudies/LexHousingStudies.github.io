@@ -18,7 +18,7 @@
             padding: 0;
             background: black;
             font-family: Lato, sans-serif;
-            color: #0D0000;
+            color: whitesmoke;
         }
         header {
             padding: 6px 10%;
@@ -47,6 +47,15 @@
             top: 0;
             bottom: 0;
         }
+        .leaflet-popup-content-wrapper {
+            background: rgba(25,25,25,0.8);
+            opacity: 0.9;
+            border-radius: 5px;
+        }
+        .leaflet-popup-tip {
+            background: rgba(25,25,25,0.8);
+            opacity: 0.8;
+        }
         
     </style>
 </head>
@@ -73,9 +82,7 @@
             zoomControl: true,
             dragging: true,
         });
-       
-
-        
+               
         //add CartoDB Dark Matter basemap
         var tiles = L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
 	       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a       href="http://cartodb.com/attributions">CartoDB</a>',
