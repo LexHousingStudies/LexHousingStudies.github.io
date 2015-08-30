@@ -31,21 +31,15 @@
             padding: 8px 15px;
             margin: 0;
             color: whitesmoke;
-            font-size: 1.5em;
-            background: rgba(25,25,25,0.8);
-            border-radius: 0;      
-        }
-        h2 {
-            position: absolute;
-            z-index: 100;
-            top: 55px;
-            left: 60px;
-            padding: 8px 15px;
-            margin: 0;
-            color: whitesmoke;
-            font-size: 0.75em;
+            font-size: 1.20em;
             background: rgba(25,25,25,0.8);
             border-radius: 0; 
+            font-weight: normal;
+        }
+        .small {
+            color: '#cc0000';
+            font-size: 0.9em;
+            font-weight: normal;
         }
         #map {            
             position: absolute;
@@ -60,11 +54,8 @@
 <body>
     <header>
 
-        <h1>Lexington Vacant/Abandoned Properties, 2015</h1>
-        <h2>Data source: Lexington Property Valuation Administration
-            <br>Map part of Lex Housing Justice Project</b>
-            <br>lexhousingjustice@gmail.com </b></h2>
-
+        <h1>Lexington Vacant/Abandoned Properties<br><small>Data source: Lexington PVA and VPRC</small></h1>
+        
     </header>
 
     <div id='map'></div>
@@ -83,6 +74,9 @@
             dragging: true,
         });
        
+
+        
+        //add CartoDB Dark Matter basemap
         var tiles = L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
 	       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a       href="http://cartodb.com/attributions">CartoDB</a>',
 	       subdomains: 'abcd',
@@ -92,18 +86,19 @@
 
         map.addLayer(tiles);
         
-//        add parcel layer        
-        L.tileLayer('http://lexhousingstudies.github.io/lexington-parcels/{z}/{x}/{y}.png').addTo(map);       
+//    //add parcel layer        
+//        L.tileLayer('http://lexhousingstudies.github.io/lexington-parcels/{z}/{x}/{y}.png').addTo(map);
 
-//        add vacancy data
-        
+//define style for vacant data    
         var vacantStyle = {
             color: '#cc0000',
             opacity: 1,
-            fillColor: 1,
+            fillColor: '#cc0000',
+            fillOpacity: 1,
             weight: 3,
         };
         
+//add vacancy data, build pop-up
         var vacant = L.geoJson(vprc, {
            style: vacantStyle,
            onEachFeature: function(features, layer) {
