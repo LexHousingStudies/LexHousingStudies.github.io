@@ -71,7 +71,7 @@
     
     </div>
       
-    <script src = "vprc_2015.js"></script>
+    <script src = "vprc_2015_pva.js"></script>
     
     <script>
         var map = L.map('map', {
@@ -111,8 +111,10 @@
            onEachFeature: function(features, layer) {
                var props = features.properties;
                
+//               console.log(props);
+               
                var content = "<b>"+props.ADDRESS+"</b><br>"+ "Lexington, KY "+
-                    props["VPRC App_4"];
+                    props["VPRC App_4"]+"<br>"+"Owner: "+props["VPRC Appeals Status v2 (6-15-2015) - PVA info_Owner"]+"<br>"+"Sale Date: "+props["VPRC Appeals Status v2 (6-15-2015) - PVA info_SaleDate"]+"<br>"+"Sale Price: $"+props["VPRC Appeals Status v2 (6-15-2015) - PVA info_SalePrice"]+"<br>"+"Sale Type: "+props["VPRC Appeals Status v2 (6-15-2015) - PVA info_Type"]+"<br>"+"Property Value: $"+props["VPRC Appeals Status v2 (6-15-2015) - PVA info_FairCashValue"];
                
                layer.bindPopup(content);
                
