@@ -70,7 +70,20 @@
     <div id='map'></div>
     
     </div>
+    
+<!--    if we want a ui control like abandonment map...-->
+<!--
+    <div id="ui-control">
+        <ul id="masterControl">
+           <li id="showAll" class="selected">Show All</li>
+           <li id="removeAll">Remove All</li>
+        </ul>
+        <ul>
+            <
+    
+    </div>
       
+-->
     <script src = "vprc_2015_pva.js"></script>
     <script src = "Lex_Vacant_Geocoded.js"></script>
 
@@ -136,7 +149,15 @@
         
             }
         }).addTo(map);
-
+        
+         var controls = {
+            "Properties": vacant,
+            "Property Owners": spatialReach                                 
+        };
+        
+        L.control.layers(null, controls, {
+            collapsed: false
+        }).addTo(map);
         
 
 //        IN DEV: info panel
