@@ -25,7 +25,7 @@ window.onload = function() {
     sublayers: [{
       sql: "SELECT * FROM " + propConnect,
       cartocss: $('#all').text(),
-      interactivity: 'cartodb_id, lexvacan_1, lexvacan_2'
+      interactivity: "cartodb_id, the_geom, address, lexvacan_2, lexvacan_3, lexvacan_4, lexvacanto, pvanum"
     }]
   }
 
@@ -50,20 +50,28 @@ cartodb.createLayer(map, layerSource)
   .addTo(map)
   .done(function(layer){
       sublayer = layer.getSubLayer(0);
+      sublayer.infowindow.set('template', $('#infowindow_template').html());
       createSelector(sublayer);
   })
   .error(function(err) {
     console.log("error: " + err);
   });
+
+  // cartodb.createLayer(map, layerSource)
+  // .on('done', function(layer){
+  //     // sublayer = layer.getSubLayer(0);
+  //     map.addLayer(layer);
+  //     layer.setInteraction(true);
+  //     layer.infowindow.set('template', $('#infowindow_template').html());
+
+  //     layer.on('featureClick', function(e, pos, latlng, data) {});
+  // })
+  // .error(function(err) {
+  //   console.log("error: " + err);
+  // });
+
         
 }
-
-
-
-
-
-
-
 
 // var map;
 //   function init(){
