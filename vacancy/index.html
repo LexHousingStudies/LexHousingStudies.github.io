@@ -8,7 +8,8 @@
 
     <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" />
+    <script src='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.2.0/leaflet-omnivore.min.js'></script>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" /> -->
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
     <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 
@@ -35,6 +36,9 @@
             background: rgba(25,25,25,0.8);
             border-radius: 0; 
             font-weight: normal;
+        }
+        figcaption {
+            font-size: 0.7em;
         }
         p.small {
             color: #A0A0A0;
@@ -72,7 +76,7 @@
 <body>
     <header>
 
-        <h1>Lexington Vacant/Abandoned Properties<br><p class = 'small'>Data source: Lexington PVA and VPRC<br>Click on each point for property info and photo</p></h1>
+        <h1>Lexington Vacant/Abandoned Properties<br><p class = 'small'>Data source: Lexington PVA and VPRC<br>Click on each red vacant property for more info and a photo</p></h1>
         
     </header>
 
@@ -122,14 +126,15 @@
 
 //define style for vacant data    
         var vacantStyle = {
-            color: '#cc0000',
-            opacity: 1,
-            fillColor: '#cc0000',
-            fillOpacity: 1,
+            color: '#e74c3c',
+            opacity: 0.8,
+            fillColor: '#e74c3c',
+            fillOpacity: 0.8,
             weight: 4,
         };
         
         var landlordStyle = {
+            color: "#3498db",
             opacity: 1,
             weight: 1,
         };
@@ -140,10 +145,10 @@
            onEachFeature: function(features, layer) {
                var props = features.properties;
                
-//               console.log(props);
-               
+              console.log(props);
+            
                var content = "<b>"+props.ADDRESS+"</b><br>"+ "Lexington, KY "+
-                    props["VPRC App_4"]+"<br>"+"Owner: "+props["VPRC Appeals Status v2 (6-15-2015) - PVA info_Owner"]+"<br>"+"Sale Date: "+props["VPRC Appeals Status v2 (6-15-2015) - PVA info_SaleDate"]+"<br>"+"Sale Price: $"+props["VPRC Appeals Status v2 (6-15-2015) - PVA info_SalePrice"]+"<br>"+"Sale Type: "+props["VPRC Appeals Status v2 (6-15-2015) - PVA info_Type"]+"<br>"+"Property Value: $"+props["VPRC Appeals Status v2 (6-15-2015) - PVA info_FairCashValue"];
+                    props["VPRC App_4"]+"<br>"+"Owner: "+props["VPRC Appeals Status v2 (6-15-2015) - PVA info_Owner"]+"<br>"+"Sale Date: "+props["VPRC Appeals Status v2 (6-15-2015) - PVA info_SaleDate"]+"<br>"+"Sale Price: $"+props["VPRC Appeals Status v2 (6-15-2015) - PVA info_SalePrice"]+"<br>"+"Sale Type: "+props["VPRC Appeals Status v2 (6-15-2015) - PVA info_Type"]+"<br>"+"Property Value: $"+props["VPRC Appeals Status v2 (6-15-2015) - PVA info_FairCashValue"] + "<br>" + "<figure><img src='http://qpublic9.qpublic.net/fayette_photos/" + props.PVANUM + "-1.jpg' width='225'><figcaption>Image from Fayette County PVA</figcaption></figure>";
                
                layer.bindPopup(content);
                
@@ -158,10 +163,32 @@
         
             }
         }).addTo(map);
+
+        
+        function style(feature) {
+            return {
+                radius: 2,
+                fillColor: "#27ae60",
+                weight: 0.5,
+                color: "#fff",
+                opacity: 0.8,
+                fillOpacity: 0.8
+            };
+        }
+
+        var ownerLocationsLayer = L.geoJson(null, {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, style(feature));
+            }
+        }).addTo(map);
+
+        var ownerLocations = omnivore.csv('Lex_Vacant_Geocoded_Owners_nodupl.csv', null, ownerLocationsLayer);
         
          var controls = {
             "Properties": vacant,
-            "Property Owners": spatialReach                                 
+            "Owners": ownerLocations,
+            "Property-to-Owner Connection": spatialReach,
+
         };
         
         L.control.layers(null, controls, {
