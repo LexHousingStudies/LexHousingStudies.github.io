@@ -59,6 +59,9 @@
                 </button>
 <!--                <a class="navbar-brand" href="#">Start Bootstrap</a>-->
             </div>
+            <div class="logo">
+                <a href="http://lexhousingstudies.github.io/"><img src="images/lhs-logo.png" /></a>
+            </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
@@ -69,13 +72,16 @@
                     </li>
 -->
                     <li>
-                        <a href="https://github.com/LexHousingStudies/LexHousingStudies.github.io">Github</a>
-                    </li>
-                    <li>
-                        <a href="https://lexhousingstudies.github.io/about/">About</a>
+                        <a href="#about" data-toggle="modal" data-target="#about">About</a>
                     </li>
                     <li>
                         <a href="https://medium.com/@HousingLEX">Blog</a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/lexhousingstudies">Github</a>
+                    </li>
+                    <li>
+                        <a href="#contact" data-toggle="modal" data-target="#contact">Contact</a>
                     </li>
 
                 </ul>
@@ -147,15 +153,15 @@
                     </div>
                 </div>
             </div>
-
-            <!-- <div class="col-md-3 col-sm-6 hero-feature">
+<!--   
+             <div class="col-md-3 col-sm-6 hero-feature">
                 <div class="thumbnail">
                     <img src="http://placehold.it/800x500" alt="">
                     <div class="caption">
                         <h3>Top 20 Landlords in Lexington</h3>
                         <p>A revealing example of the concentrated private ownership of residential land in Lexington. This map displays the top 20 landlords, where their properties are, and where they live in relation to the properties.</p>
                         <p>
-<!--                            <a href="http://lexhousingstudies.github.io/landlords/" class="btn btn-primary">View map</a>-->
+                         <a href="http://lexhousingstudies.github.io/landlords/" class="btn btn-primary">View map</a>
                         </p>
                     </div>
                 </div>
@@ -168,27 +174,78 @@
                         <h3>Top 20 Landlords in Northeast Lexington</h3>
                         <p>A more in-depth snapshop of concentrated private ownership of land in the Northeast area of Lexington, displaying the Top 20 landlords within these boundaries.</p>
                         <p>
-<!--                            <a href="http://lexhousingstudies.github.io/NELEXlandlords/" class="btn btn-primary">View map</a>-->
+                         <a href="http://lexhousingstudies.github.io/NELEXlandlords/" class="btn btn-primary">View map</a>
                         </p>
                     </div>
                 </div>
-            </div> -->
+            </div>
 
-        </div>
+        </div> -->
         <!-- /.row -->
 
-        <hr>
+        <!-- <hr> -->
+
+        <!-- About modal -->
+        <div class="modal fade" id="about" tabindex="-1" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">About Lexington Housing Studies</h4>
+              </div>
+              <div class="modal-body">
+                <p><b>Lexington Housing Studies is an organization of data-driven research and analysis of housing, property and neighborhood change in Lexington, Kentucky. We work with the Lexington Housing Justice Project and believe that there is a universal human need for and right to housing that is an affordable social entitlement rather than an expensive commodity. We aim to expose the root causes of housing injustice and to politicize people to exercise our collective right to make the city more equitable and democratic.</b></p>
+                <p>If you agree with our belief, then you may be interested in the Lexington Housing Justice Project, a group meeting monthly in Lexington. Some of the things we've been discussing include:
+                </p> 
+                <ol>
+                    <li>Converting vacant properties owned by slumlords into permanently affordable housing.</li>
+                    <li>Organizing tenant associations that could fight for renters' rights, including improved housing conditions, rent freezes, and protection from evictions.</li>
+                    <li>Bringing more land and housing under public/social ownership in order to prevent the gentrification-induced displacement of poor residents from the working class neighborhoods where many black people live.</li>
+                </ol>
+                <p>Contact us via email at <b><a href="mailto:lexingtonhousingstudies@gmail.com">lexingtonhousingstudies@gmail.com</a></b> for any questions/comments about the maps.</p>
+                <p>Email <b><a href="mailto:lexingtonhousingjustice@gmail.com">lexingtonhousingjustice@gmail.com</a></b> for more info and to be added to our contact list in order to stay up-to-date.</p>
+                <p><b>Follow and read Lexington Housing Studies' blogposts providing research and anlysis <a href="https://medium.com/@HousingLEX">here</a>.</b></p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+        <!-- Contact modal -->
+        <div class="modal fade" id="contact" tabindex="-1" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Contact</h4>
+              </div>
+              <div class="modal-body">
+                <p>If you have comments or concerns about particular aspects of our work here at Lexington Housing Studies, please engage with us directly. We'd be happy to engage in civil conversation about the complexities of housing in Lexington! We have a few channels through which you can engage with us:</p>
+                <ul>
+                    <li>Email: <a href="mailto:lexhousingstudies@gmail.com">lexhousingstudies@gmail.com</a></li>
+                    <li>Twitter: <a href="https://twitter.com/HousingLEX">@housingLEX</a></li>
+                    <li>Comment directly on our blog posts on <a href="https://medium.com/@HousingLEX">Medium</a></li>
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
 
         <!-- Footer -->
-<!--
+
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
+                    <p>Copyright &copy; Lexington Housing Studies, 2015</p>
                 </div>
             </div>
         </footer>
--->
+
 
     </div>
     <!-- /.container -->

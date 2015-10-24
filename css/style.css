@@ -2,3 +2,24 @@
 html,body {
 	font-family: Lato, Arial, sans-serif;
 }
+
+#about, #contact {
+	text-align: left;
+}
+
+.logo {
+    float: right;
+}
+.logo>a>img {
+    width: 45px;
+    height: 45px;
+    margin-top: 2.5px;
+    margin-bottom: 2.5px;
+    /*box-shadow: 1px 1px 5px 0px rgba(48,48,48,1);*/
+}
+
+/*TODO: Logo needs to either be on the same line as the menu or removed from the page when width < 768px*/
+/*@media screen and (max-width: 768px) {
+	.logo {
+    
+}*/
